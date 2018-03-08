@@ -13,9 +13,9 @@ class CityController extends Controller
     /**
      * OAuthController constructor.
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
+        if('null' == 'null'){ /**/ }
     }
 
     /**
