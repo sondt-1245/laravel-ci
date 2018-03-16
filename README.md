@@ -1,3 +1,5 @@
+
+
 # Sample Laravel Project with Tests
 This is a part of [Laravel Test Guideline](https://github.com/framgia/laravel-test-guideline) Project, made by Framgia Vietnam.
 
