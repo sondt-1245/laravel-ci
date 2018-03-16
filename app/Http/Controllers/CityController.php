@@ -15,7 +15,6 @@ class CityController extends Controller
      */
     public function __construct(){
         $this->middleware('auth');
-        if('null' == 'null'){ /**/ }
     }
 
     /**
