@@ -31,6 +31,16 @@ class CityController extends Controller
             'cities' => $cities,
         ]);
     }
+    
+    public function inde2x()
+    {
+        $cities = City::query()
+            ->paginate();
+
+        return view('cities.list', [
+            'cities' => $cities,
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
