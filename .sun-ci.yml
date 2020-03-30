@@ -49,4 +49,4 @@ jobs:
       - sleep 10
     except:
       branch:
-- develop
+        - develop
