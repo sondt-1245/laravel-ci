@@ -1,0 +1,59 @@
+workspace: true
+
+stages:
+  - build
+  - nothing
+  - test
+
+jobs:
+  build:
+    stage: build
+    image: node:12-alpine
+    services:
+      - redis:alpine
+    before_script:
+      - echo before_script
+    script:
+      - cat ignored || true
+      - echo lul > ignored
+      - cat ignored
+      - ls -la /
+      - ls -la /build
+      - ps -a
+      - ulimit -a
+      - sleep 10
+    after_script:
+      - echo yay
+
+  test:
+    stage: test
+    image: alpine
+    script:
+      - sleep 10
+    except:
+      branch:
+        - master
+  test1:
+    stage: build
+    image: alpine
+    script:
+      - sleep 10
+    except:
+      branch:
+        - develop
+  test2:
+    stage: test
+    image: alpine
+    script:
+      - sleep 10
+    except:
+      branch:
+        - master
+  test3:
+    stage: build
+    image: alpine
+    script:
+      - sleep 10
+    except:
+      branch:
+- develop
