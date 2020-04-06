@@ -14,21 +14,20 @@ jobs:
     before_script:
       - echo before_script
     script:
-      - cat ignored || true
-      - echo lul > ignored
-      - cat ignored
       - ls -la /
       - ls -la /build
       - ps -a
       - ulimit -a
       - sleep 10
+      - echo fuck
     after_script:
-      - echo yay
+      - echo yayfuck
 
   test:
     stage: test
     image: alpine
     script:
+      - echo fuck
       - sleep 10
       - echo 'except develop'
     except:
@@ -39,6 +38,7 @@ jobs:
     image: alpine
     script:
       - sleep 10
+      - echo fuck
     except:
       branch:
         - master
@@ -47,6 +47,7 @@ jobs:
     image: alpine
     script:
       - sleep 10
+      - echo fuck
     except:
       branch:
         - develop
