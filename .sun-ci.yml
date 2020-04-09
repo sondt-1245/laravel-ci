@@ -43,11 +43,26 @@ jobs:
       branch:
         - master
   test3:
-    stage: build
+    stage: test
     image: alpine
     script:
       - sleep 10
       - echo fuck
+    except:
+      branch:
+        - develop
+  sonar_test:
+    stage: test
+    image: sonarsource/sonar-scanner-cli
+    before_script:
+      - pwd
+    script:
+      - | 
+      sonar-scanner \
+        -Dsonar.projectKey=ci-v3 \
+        -Dsonar.sources=. \
+        -Dsonar.host.url=http://localhost:9000 \
+        -Dsonar.login=146484af66a6c88a0912a3624839f006e60c47df
     except:
       branch:
         - develop
