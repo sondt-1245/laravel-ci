@@ -57,8 +57,7 @@ jobs:
     before_script:
       - pwd
     script:
-      - | 
-      sonar-scanner -Dsonar.projectKey=ci-v3 -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 Dsonar.login=146484af66a6c88a0912a3624839f006e60c47df
+      - sonar-scanner -Dsonar.projectKey=ci-v3 -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=146484af66a6c88a0912a3624839f006e60c47df
     except:
       branch:
         - develop
