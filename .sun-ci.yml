@@ -57,7 +57,7 @@ jobs:
     before_script:
       - pwd
     script:
-      - sonar-scanner
+      - sonar-scanner -Dsonar.projectKey=ci-v3 -Dsonar.sources=./app -Dsonar.host.url=https://80e414da.ngrok.io -Dsonar.login=146484af66a6c88a0912a3624839f006e60c47df
     except:
       branch:
         - develop
