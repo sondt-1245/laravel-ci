@@ -2,7 +2,6 @@ workspace: true
 
 stages:
   - build
-  - nothing
   - test
 
 jobs:
@@ -18,7 +17,7 @@ jobs:
       - ls -la /build
       - ps -a
       - ulimit -a
-      - sleep 10
+      - sleep 11
       - echo hello
     after_script:
       - echo duckkk
