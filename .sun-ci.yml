@@ -27,7 +27,7 @@ jobs:
     image: alpine
     script:
       - echo ha
-      - sleep 10
+      - sleep 1
       - echo 'except develop'
     except:
       branches:
@@ -36,7 +36,7 @@ jobs:
     stage: test
     image: alpine
     script:
-      - sleep 10
+      - sleep 2
       - echo ha
     except:
       branches:
@@ -45,7 +45,7 @@ jobs:
     stage: test
     image: alpine
     script:
-      - sleep 10
+      - sleep 2
       - echo ha
     except:
       branches:
