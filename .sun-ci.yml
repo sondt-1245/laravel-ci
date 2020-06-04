@@ -14,10 +14,7 @@ jobs:
       - echo before_script
     script:
       - ls -la /
-      - ls -la /build
-      - ps -a
       - ulimit -a
-      - sleep 11
       - echo hello
     after_script:
       - echo duckkk
