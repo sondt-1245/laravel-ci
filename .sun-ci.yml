@@ -25,7 +25,7 @@ jobs:
     script:
       - echo ha
       - sleep 1
-      - echo 'except develop'
+      - echo 'except develop1'
     except:
       branches:
         - develop
