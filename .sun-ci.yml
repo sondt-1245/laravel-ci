@@ -13,19 +13,15 @@ jobs:
     before_script:
       - echo before_script
     script:
-      - ls -la /
-      - ulimit -a
-      - echo hello
+      - echo "Build title should take only subject from commit message"
     after_script:
-      - echo duckkk
+      - echo "Build title should take only subject from commit message"
 
   test:
     stage: test
     image: alpine
     script:
-      - echo ha
-      - sleep 1
-      - echo 'except develop1'
+      - echo "Build title should take only subject from commit message"
     except:
       branches:
         - develop
