@@ -29,7 +29,7 @@ jobs:
     stage: test
     image: alpine
     script:
-      - sleep 2
+      - sleep 2 Build title should take only subject from commit message
       - echo ha
     except:
       branches:
