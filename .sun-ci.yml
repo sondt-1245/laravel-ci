@@ -30,7 +30,7 @@ jobs:
     image: alpine
     script:
       - sleep 2
-      - echo ha
+      - echo "Build title should take only subject from commit message"
     except:
       branches:
         - master
@@ -39,7 +39,7 @@ jobs:
     image: alpine
     script:
       - sleep 2
-      - echo ha
+      - echo "Build title should take only subject from commit message"
     except:
       branches:
         - develop
