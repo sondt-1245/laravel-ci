@@ -13,6 +13,7 @@ jobs:
     before_script:
       - echo before_script
     script:
+      - ls -la
       - echo "Build title should take only subject from commit message"
     after_script:
       - echo "Build title should take only subject from commit message"
