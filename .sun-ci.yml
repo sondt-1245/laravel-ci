@@ -18,7 +18,31 @@ jobs:
     after_script:
       - echo "Build title should take only subject from commit message"
 
-  test:
+  testt:
+    stage: test
+    image: alpine
+    script:
+      - echo "Build title should take only subject from commit message"
+    except:
+      branches:
+        - develop
+  testt1:
+    stage: test
+    image: alpine
+    script:
+      - echo "Build title should take only subject from commit message"
+    except:
+      branches:
+        - develop
+  testt2:
+    stage: test
+    image: alpine
+    script:
+      - echo "Build title should take only subject from commit message"
+    except:
+      branches:
+        - develop
+  testt3:
     stage: test
     image: alpine
     script:
