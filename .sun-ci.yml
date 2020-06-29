@@ -20,7 +20,7 @@ jobs:
 
   testt:
     stage: test
-    image: alpine
+    image: sunci/capistrano:latest
     script:
       - echo "Build title should take only subject from commit message"
     except:
@@ -28,7 +28,7 @@ jobs:
         - develop
   testt1:
     stage: test
-    image: alpine
+    image: sunci/capistrano:latest
     script:
       - echo "Build title should take only subject from commit message"
     except:
@@ -36,7 +36,7 @@ jobs:
         - develop
   testt2:
     stage: test
-    image: alpine
+    image: sunci/capistrano:latest
     script:
       - echo "Build title should take only subject from commit message"
     except:
@@ -44,7 +44,7 @@ jobs:
         - develop
   testt3:
     stage: test
-    image: alpine
+    image: sunci/capistrano:latest
     script:
       - echo "Build title should take only subject from commit message"
     except:
@@ -52,7 +52,7 @@ jobs:
         - develop
   test2:
     stage: test
-    image: alpine
+    image: sunci/capistrano:latest
     script:
       - sleep 2
       - echo ha
@@ -61,7 +61,7 @@ jobs:
         - master
   test3:
     stage: test
-    image: alpine
+    image: sunci/capistrano:latest
     script:
       - sleep 2
       - echo ha
