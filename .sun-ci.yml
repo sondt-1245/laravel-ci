@@ -64,7 +64,7 @@ jobs:
     image: sunci/capistrano:latest
     script:
       - sleep 2
-      - echo ha
+      - echo haâdáddđ
     except:
       branches:
         - develop
