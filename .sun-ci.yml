@@ -18,53 +18,15 @@ jobs:
     after_script:
       - echo "Build title should take only subject from commit message"
 
-  testt:
+  test:input1:
     stage: test
     image: sunci/capistrano:latest
     script:
-      - echo "Build title should take only subject from commit message"
-    except:
-      branches:
-        - develop
-  testt1:
-    stage: test
-    image: sunci/capistrano:latest
-    script:
-      - echo "Build title should take only subject from commit message"
-    except:
-      branches:
-        - develop
-  testt2:
-    stage: test
-    image: sunci/capistrano:latest
-    script:
-      - echo "Build title should take only subject from commit message"
-    except:
-      branches:
-        - develop
-  testt3:
-    stage: test
-    image: sunci/capistrano:latest
-    script:
-      - echo "Build title should take only subject from commit message"
-    except:
-      branches:
-        - develop
-  test2:
-    stage: test
-    image: sunci/capistrano:latest
-    script:
-      - sleep 2
-      - echo ha
-    except:
-      branches:
-        - master
-  test3:
-    stage: test
-    image: sunci/capistrano:latest
-    script:
-      - sleep 2
-      - echo ha
+      - echo "start build"
+      - sleep 720
+      - echo 'end sleep'
+      - sleep 800
+      - echo 'end sleep 800'
     except:
       branches:
         - develop
