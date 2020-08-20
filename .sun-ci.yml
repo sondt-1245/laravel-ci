@@ -5,7 +5,7 @@ stages:
   - test
 
 jobs:
-  build:
+  - name: Job1
     stage: build
     image: node:12-alpine
     services:
@@ -18,15 +18,14 @@ jobs:
     after_script:
       - echo "Build title should take only subject from commit message"
 
-  test:input1:
+  - name: Job 2
     stage: test
     image: sunci/capistrano:latest
     script:
-      - echo "start build"
-      - sleep 720
-      - echo 'end sleep'
-      - sleep 800
-      - echo 'end sleep 800'
-    except:
-      branches:
-        - develop
+      - sleep 5
+      
+  - name: Job 3
+    stage: test
+    image: sunci/capistrano:latest
+    script:
+      - sleep 5
