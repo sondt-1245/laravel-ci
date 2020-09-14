@@ -17,6 +17,10 @@ jobs:
       - echo "Build title should take only subject from commit message"
     after_script:
       - echo "Build title should take only subject from commit message"
+    artifacts:
+      paths:
+      - app/Http
+      expires_in: 3 days
 
   - name: Job 2
     stage: test
