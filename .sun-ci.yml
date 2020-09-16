@@ -3,6 +3,7 @@ workspace: true
 stages:
   - build
   - test
+  - deploy
 
 jobs:
   - name: Job1
@@ -21,6 +22,9 @@ jobs:
       paths:
       - app/Http
       expires_in: 3 days
+    deployment:
+      enviroment: test
+      url: https://htt.com
 
   - name: Job 2
     stage: test
@@ -31,6 +35,15 @@ jobs:
   - name: Job 3
     stage: test
     image: sunci/capistrano:latest
+    script:
+      - sleep 5
+      - echo done
+  - name: Job 4
+    stage: deploy
+    image: sunci/capistrano:latest
+    deployment:
+      enviroment: production
+      url: https://htt.com
     script:
       - sleep 5
       - echo done
