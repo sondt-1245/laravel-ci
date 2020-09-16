@@ -23,7 +23,7 @@ jobs:
       - app/Http
       expires_in: 3 days
     deployment:
-      enviroment: test
+      environment: test
       url: https://htt.com
 
   - name: Job 2
@@ -42,7 +42,7 @@ jobs:
     stage: deploy
     image: sunci/capistrano:latest
     deployment:
-      enviroment: production
+      environment: production
       url: https://htt.com
     script:
       - sleep 5
