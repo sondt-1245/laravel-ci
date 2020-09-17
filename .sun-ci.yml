@@ -35,6 +35,9 @@ jobs:
   - name: Job 3
     stage: test
     image: sunci/capistrano:latest
+    deployment:
+      environment: production
+      url: https://htt22.com
     script:
       - sleep 5
       - echo done
