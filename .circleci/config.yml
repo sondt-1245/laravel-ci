@@ -6,45 +6,57 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: framgia/laravel-workspace
+      # Specify the version you desire here
+      - image: circleci/php:7.1-node-browsers
+        environment: 
+           aâ
+           aâ
+           
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      - image: circleci/mysql:5.7.18
-        environment:
-          MYSQL_DATABASE: homestead_test
-          MYSQL_USER: homestead_test
-          MYSQL_PASSWORD: secret
-          MYSQL_ROOT_PASSWORD: root
-
-    working_directory: ~/repo
+      # Using the RAM variation mitigates I/O contention
+      # for database intensive operations.
+      # - image: circleci/mysql:5.7-ram
+      #
+      # - image: redis:2.8.19
 
     steps:
       - checkout
 
-      - run: chmod -R 777 storage
-      - run: cp .env.testing.example .env
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
 
       # Download and cache dependencies
-      # Composer
       - restore_cache:
-          name: Restore composer cache
           keys:
-          - composer-{{ checksum "composer.json" }}
-          - composer-
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
       - run: composer install -n --prefer-dist
+
       - save_cache:
-          name: Store composer cache
-          key: composer-{{ checksum "composer.json" }}
+          key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
-            - vendor
-      - store_artifacts:
-          path: storage/
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-    
+            - ./vendor
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package.json" }}
+            - node-v1-
+      - run: yarn install
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      # prepare the database
+      - run: touch storage/testing.sqlite
+      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+
+      # run tests with phpunit or codecept
+      #- run: ./vendor/bin/phpunit
+      - run: ./vendor/bin/codecept build
+      - run: ./vendor/bin/codecept run
