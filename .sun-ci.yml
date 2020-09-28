@@ -48,13 +48,13 @@ jobs:
 
   - name: Job 2
     stage: test
-    image: sunci/capistrano:latest
+    image: node:12-alpine
     script:
       - sleep 5
       
   - name: Job 3
     stage: test
-    image: sunci/capistrano:latest
+    image: node:12-alpine
     deployment:
       environment: production
       url: https://htt22.com
@@ -63,7 +63,7 @@ jobs:
       - echo done
   - name: Job 4
     stage: deploy
-    image: sunci/capistrano:latest
+    image: node:12-alpine
     deployment:
       environment: production
       url: https://htt.com
