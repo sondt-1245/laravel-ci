@@ -25,6 +25,26 @@ jobs:
     deployment:
       environment: test
       url: https://htt.com
+  
+  - name: Job33
+    stage: build
+    image: node:12-alpine
+    services:
+      - redis:alpine
+    before_script:
+      - echo before_script
+    script:
+      - ls -la
+      - echo "Build title should take only subject from commit message"
+    after_script:
+      - echo "Build title should take only subject from commit message"
+    artifacts:
+      paths:
+      - app/Http
+      expires_in: 3 days
+    deployment:
+      environment: test
+      url: https://htt.com
 
   - name: Job 2
     stage: test
