@@ -1,4 +1,4 @@
-workspace: true
+workspace: false
 
 stages:
   - build
