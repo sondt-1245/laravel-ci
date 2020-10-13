@@ -51,7 +51,7 @@ jobs:
     image: node:12-alpine
     script:
       - sleep 5
-      - exit 1
+      - exit $(shuf -i 0-1 -n 1)
       
   - name: Job 3
     stage: test
