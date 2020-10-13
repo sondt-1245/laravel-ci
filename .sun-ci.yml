@@ -64,7 +64,7 @@ jobs:
   - name: Job 4
     stage: deploy
     image: node:12-alpine
-    deployment:
+    release:
       environment: production
       url: https://htt.com
     script:
