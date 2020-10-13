@@ -51,6 +51,7 @@ jobs:
     image: node:12-alpine
     script:
       - sleep 5
+      - exit 1
       
   - name: Job 3
     stage: test
@@ -62,6 +63,15 @@ jobs:
       - sleep 5
       - echo done
   - name: Job 4
+    stage: deploy
+    image: node:12-alpine
+    release:
+      environment: production
+      url: https://htt.com
+    script:
+      - sleep 5
+      - echo done
+  - name: Job 5
     stage: deploy
     image: node:12-alpine
     release:
