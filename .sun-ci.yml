@@ -9,6 +9,7 @@ jobs:
   - name: Job1
     stage: build
     image: node:12-alpine
+    allow_failure: true
     services:
       - redis:alpine
     before_script:
@@ -29,6 +30,7 @@ jobs:
   - name: Job33
     stage: build
     image: node:12-alpine
+    allow_failure: false
     services:
       - redis:alpine
     before_script:
@@ -49,9 +51,10 @@ jobs:
   - name: Job 2
     stage: test
     image: node:12-alpine
+    allow_failure: true
     script:
       - sleep 5
-      - exit $(shuf -i 0-1 -n 1)
+      - exit 1
       
   - name: Job 3
     stage: test
