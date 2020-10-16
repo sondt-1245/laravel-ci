@@ -74,7 +74,7 @@ jobs:
     script:
       - sleep 5
       - echo done
-  - name: 
+  - name: Disallow failure
     stage: deploy
     image: node:12-alpine
     release:
