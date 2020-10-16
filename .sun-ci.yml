@@ -48,7 +48,7 @@ jobs:
       environment: test
       url: https://htt.com
 
-  - name: Job 2
+  - name: Allow failed job
     stage: test
     image: node:12-alpine
     allow_failure: true
@@ -74,7 +74,7 @@ jobs:
     script:
       - sleep 5
       - echo done
-  - name: Job 5
+  - name: 
     stage: deploy
     image: node:12-alpine
     release:
@@ -82,4 +82,4 @@ jobs:
       url: https://htt.com
     script:
       - sleep 5
-      - echo done
+      - exit 1
