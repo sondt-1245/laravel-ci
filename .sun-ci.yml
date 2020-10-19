@@ -82,4 +82,4 @@ jobs:
       url: https://htt.com
     script:
       - sleep 5
-      - exit 1
+      - exit 0
