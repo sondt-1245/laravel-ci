@@ -1,185 +1,82 @@
-workspace: true
-
-.docker-build: &docker-build
-  image: docker:stable
-  services:
-  - docker:stable-dind
-  script:
-  - export UNIQUE_TAG="build-$CI_BUILD_NUMBER-$APP_ENV_TAG"
-  - apk add --no-cache make
-  - echo $REGISTRY_PASSWORD | docker login $REGISTRY_PATH -u $REGISTRY_LOGIN --password-stdin
-  - make pull
-  - make all
-  - make release
-
-.helm-deploy: &helm-deploy
-  image: alpine/helm
-  entrypoint: []
-  environment:
-    HELM_REPO_URL: https://research.sun-asterisk.vn/charts
-    KUBE_NAMESPACE: sun-ci
-    DEPLOY_RELEASE_NAME: sun-ci
-  script:
-  - echo "$KUBE_SERVER_CA" > /usr/local/share/ca-certificates/kube-server.crt
-  - update-ca-certificates
-  - helm repo add
-    --username "$HELM_REPO_USERNAME"
-    --password "$HELM_REPO_PASSWORD"
-    sun-ci "$HELM_REPO_URL"
-  - helm upgrade
-    --kube-apiserver "$KUBE_SERVER"
-    --kube-token "$KUBE_TOKEN"
-    --namespace "$KUBE_NAMESPACE"
-    --reuse-values
-    --set sun-ci.image.tag="$DEPLOY_TAG"
-    "$DEPLOY_RELEASE_NAME" sun-ci/sun-ci
-
-.master: &master
-  branches:
-  - master
-
-.develop: &develop
-  branches:
-  - develop
-
-.master-or-develop: &master-or-develop
-  branches:
-  - master
-  - develop
-
-.pr: &pull-request
-  events:
-  - pull_request
-
-.skip-deploy: &skip-deploy
-  message: "[ci skip deploy]"
+workspace: false
 
 stages:
-- Install
-- Test
-- Build
-- Deploy
+  - build
+  - test
+  - deploy
 
 jobs:
-- name: Yarn Install
-  stage: Install
-  image: node:12-alpine
-  script:
-  - yarn
-  cache:
-  - key: node_modules_$CI_BRANCH
-    paths:
-    - web/node_modules
+  - name: Job1
+    stage: build
+    image: node:12-alpine
+    services:
+      - redis:alpine
+    before_script:
+      - echo before_script
+    script:
+      - ls -la
+      - echo "Build title should take only subject from commit message"
+    after_script:
+      - echo "Build title should take only subject from commit message"
+    artifacts:
+      paths:
+      - app/Http
+      expires_in: 3 days
+    release:
+      environment: test
+      url: https://htt.com
+  
+  - name: Job33
+    stage: build
+    image: node:12-alpine
+    services:
+      - redis:alpine
+    before_script:
+      - echo before_script
+    script:
+      - ls -la
+      - echo "Build title should take only subject from commit message"
+    after_script:
+      - echo "Build title should take only subject from commit message"
+    artifacts:
+      paths:
+      - app/Http
+      expires_in: 3 days
+    release:
+      environment: test
+      url: https://htt.com
 
-- name: Composer Install
-  stage: Install
-  image: sunasteriskrnd/php-workspace:7.4
-  script:
-  - composer install -d api
-  cache:
-  - key: vendor_$CI_BRANCH
-    paths:
-    - api/vendor
-
-- name: ESLint
-  stage: Test
-  image: node:12-alpine
-  script:
-  - yarn lint
-
-- name: PHP CodeSniffer
-  stage: Test
-  image: sunasteriskrnd/php-workspace:7.4
-  script:
-  - composer sniff -d api
-
-- name: PHPUnit
-  stage: Test
-  image: sunasteriskrnd/php-workspace:7.4
-  services:
-  - redis:alpine
-  - image: postgres:12-alpine
-    environment:
-    - POSTGRES_DB=sun_ci
-    - POSTGRES_USER=sun_ci
-    - POSTGRES_PASSWORD=secret
-  environment:
-  - APP_ENV=testing
-  script:
-  - docker-php-ext-disable xdebug
-  - cd api
-  - cp .env.example .env.testing
-  - php artisan key:generate
-  - php artisan migrate
-  - composer coverage
-  artifacts:
-    paths:
-    - api/coverage
-    expires_in: 3 days
-
-- name: Staging build
-  stage: Build
-  environment:
-    TAG: develop
-    APP_ENV: staging
-    APP_URL: https://ci-stg.sun-asterisk.vn
-    APP_ENV_TAG: stg
-  only: *develop
-  except: *pull-request
-  <<: *docker-build
-
-- name: Development build
-  stage: Build
-  environment:
-    APP_ENV: development
-    APP_URL: https://ci-stg.sun-asterisk.vn
-    APP_ENV_TAG: dev
-  before_script:
-  - export TAG=$(echo $CI_BRANCH | sed -E 's/[^[:alnum:]]+/_/g')
-  except:
-    <<: *master-or-develop
-    <<: *pull-request
-  <<: *docker-build
-
-- name: Production build
-  stage: Build
-  environment:
-    TAG: stable
-    APP_ENV: production
-    APP_URL: https://ci.sun-asterisk.com
-    APP_ENV_TAG: prod
-  only: *master
-  except: *pull-request
-  <<: *docker-build
-
-- name: Staging deploy
-  stage: Deploy
-  before_script:
-  - export KUBE_SERVER="$STAGING_KUBE_SERVER"
-  - export KUBE_SERVER_CA="$STAGING_KUBE_SERVER_CA"
-  - export KUBE_TOKEN="$STAGING_KUBE_TOKEN"
-  - export DEPLOY_TAG="build-$CI_BUILD_NUMBER-stg"
-  only: *develop
-  except:
-    <<: *pull-request
-    <<: *skip-deploy
-  <<: *helm-deploy
-  release:
-    environment: staging
-    url: https://ci-stg.sun-asterisk.vn
-
-- name: Production deploy
-  stage: Deploy
-  before_script:
-  - export KUBE_SERVER="$PRODUCTION_KUBE_SERVER"
-  - export KUBE_SERVER_CA="$PRODUCTION_KUBE_SERVER_CA"
-  - export KUBE_TOKEN="$PRODUCTION_KUBE_TOKEN"
-  - export DEPLOY_TAG="build-$CI_BUILD_NUMBER-prod"
-  only: *master
-  except:
-    <<: *pull-request
-    <<: *skip-deploy
-  <<: *helm-deploy
-  release:
-    environment: production
-    url: https://ci.sun-asterisk.com
+  - name: Allow failed job
+    stage: test
+    image: node:12-alpine
+    script:
+      - sleep 5
+      - exit 1
+      
+  - name: Job 3
+    stage: test
+    image: node:12-alpine
+    release:
+      environment: production
+      url: https://htt22.com
+    script:
+      - sleep 5
+      - echo done
+  - name: Job 4
+    stage: deploy
+    image: node:12-alpine
+    release:
+      environment: production
+      url: https://htt.com
+    script:
+      - sleep 5
+      - echo done
+  - name: Disallow failure
+    stage: deploy
+    image: node:12-alpine
+    release:
+      environment: production
+      url: https://htt.com
+    script:
+      - sleep 5
+      - exit 0
