@@ -1,11 +1,18 @@
 workspace: false
 
 stages:
+  - install
   - build
   - test
   - deploy
 
 jobs:
+  - name: Composer Install
+    stage: install
+    image: sunasteriskrnd/php-workspace:7.4
+    script:
+    - composer install
+  
   - name: Job1
     stage: build
     image: node:12-alpine
