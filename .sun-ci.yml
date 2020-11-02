@@ -1,21 +1,15 @@
 workspace: false
 
 stages:
-  - install
   - build
   - test
   - deploy
 
 jobs:
-  - name: Composer Install
-    stage: install
-    image: sunasteriskrnd/php-workspace:7.4
-    script:
-    - composer install
-  
   - name: Job1
     stage: build
     image: node:12-alpine
+    allow_failure: true
     services:
       - redis:alpine
     before_script:
@@ -36,6 +30,7 @@ jobs:
   - name: Job33
     stage: build
     image: node:12-alpine
+    allow_failure: false
     services:
       - redis:alpine
     before_script:
@@ -53,9 +48,10 @@ jobs:
       environment: test
       url: https://htt.com
 
-  - name: Allow failed job
+  - name: Job 2
     stage: test
     image: node:12-alpine
+    allow_failure: true
     script:
       - sleep 5
       - exit 1
@@ -78,7 +74,7 @@ jobs:
     script:
       - sleep 5
       - echo done
-  - name: Disallow failure
+  - name: Job 5
     stage: deploy
     image: node:12-alpine
     release:
@@ -86,4 +82,4 @@ jobs:
       url: https://htt.com
     script:
       - sleep 5
-      - exit 0
+      - echo done
