@@ -17,24 +17,24 @@ jobs:
     - key: vendor_$CI_BRANCH
       paths:
       - api/vendor
-    - name: PHPUnit
-      stage: Test
-      image: sunasteriskrnd/php-workspace:7.4
-      environment:
-      - APP_ENV=testing
-      script:
-      - docker-php-ext-disable xdebug
-      - cp .env.example .env.testing
-      - php artisan key:generate
-      - php artisan migrate
-      - composer coverage
-      coverage:
-        type: clover
-        path: api/coverage.xml
-      artifacts:
-        paths:
-        - api/coverage
-        expires_in: 3 days
+  - name: PHPUnit
+    stage: Test
+    image: sunasteriskrnd/php-workspace:7.4
+    environment:
+    - APP_ENV=testing
+    script:
+    - docker-php-ext-disable xdebug
+    - cp .env.example .env.testing
+    - php artisan key:generate
+    - php artisan migrate
+    - composer coverage
+    coverage:
+      type: clover
+      path: api/coverage.xml
+    artifacts:
+      paths:
+      - api/coverage
+      expires_in: 3 days
     
   - name: Job1
     stage: build
