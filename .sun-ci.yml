@@ -1,40 +1,22 @@
 workspace: false
 
 stages:
-  - Install
   - Test
   - build
   - test
   - deploy
 
 jobs:
-  - name: Composer Install
-    stage: Install
-    image: sunasteriskrnd/php-workspace:7.4
-    script:
-    - composer install
-    cache:
-    - key: vendor_$CI_BRANCH
-      paths:
-      - vendor
   - name: PHPUnit
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
     environment:
     - APP_ENV=testing
     script:
-    - docker-php-ext-disable xdebug
-    - cp .env.example .env.testing
-    - php artisan key:generate
-    - php artisan migrate
-    - composer coverage
+    - echo "Generate coverage file"
     coverage:
       type: clover
-      path: api/coverage.xml
-    artifacts:
-      paths:
-      - api/coverage
-      expires_in: 3 days
+      path: coverage.xml
     
   - name: Job1
     stage: build
