@@ -12,11 +12,11 @@ jobs:
     stage: Install
     image: sunasteriskrnd/php-workspace:7.4
     script:
-    - composer install -d api
+    - composer install
     cache:
     - key: vendor_$CI_BRANCH
       paths:
-      - api/vendor
+      - vendor
   - name: PHPUnit
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
