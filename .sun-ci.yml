@@ -17,7 +17,8 @@ jobs:
     coverage:
       type: clover
       path: coverage.xml
- - name: Demo0
+  
+  - name: Demo0
     stage: test
     image: sunasteriskrnd/php-workspace:7.4
     environment:
