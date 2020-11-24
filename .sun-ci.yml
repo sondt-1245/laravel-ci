@@ -17,3 +17,15 @@ jobs:
     coverage:
       type: clover
       path: coverage.xml
+ - name: Demo0
+    stage: test
+    image: sunasteriskrnd/php-workspace:7.4
+    environment:
+    - APP_ENV=testing
+    script:
+    - echo "Generate coverage file"
+    artifacts:
+      name: hahaha
+      expires_in: 3 days
+      paths:
+      - coverage.xml
