@@ -22,9 +22,9 @@ jobs:
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
     environment:
-    - APP_ENV=testing
+    - APP_ENV=testing1
     script:
-    - echo "Generate coverage file"
+    - echo "Generate cobertura file"
     coverage:
       type: cobertura
       path: cobertura.xml
