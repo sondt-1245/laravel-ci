@@ -24,7 +24,7 @@ jobs:
     environment:
     - APP_ENV=testing1
     script:
-    - echo "Generate cobertura file"
+    - echo "Generate cobertura2  file"
     coverage:
       type: cobertura
       path: cobertura.xml
