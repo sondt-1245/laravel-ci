@@ -2,7 +2,7 @@ workspace: false
 
 registries:
   registry.gitlab.com:
-    username: $USER
+    username: user_$CI_BUILD_ID
     password: $PASS
   registry2.gitlab.com:
     username: $USER
