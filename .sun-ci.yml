@@ -2,11 +2,11 @@ workspace: false
 
 registries:
   registry.gitlab.com:
-    username: $asds
-    password: $asdas
+    username: $USER
+    password: $PASS
   registry2.gitlab.com:
-    username: $asds
-    password: $asdas
+    username: $USER
+    password: $PASS
 
 stages:
   - Test
