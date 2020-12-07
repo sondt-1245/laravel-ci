@@ -1,5 +1,13 @@
 workspace: false
 
+registries:
+  registry.gitlab.com:
+    username: $asds
+    password: $asdas
+  registry2.gitlab.com:
+    username: $asds
+    password: $asdas
+
 stages:
   - Test
   - build
@@ -10,6 +18,7 @@ jobs:
   - name: PHPUnit
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
+    registry: registry.gitlab.com
     environment:
     - APP_ENV=testing
     script:
