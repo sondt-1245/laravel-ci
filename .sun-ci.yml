@@ -18,6 +18,8 @@ jobs:
   - name: CommitLint
     stage: Test
     image: wagoid/commitlint-github-action:2.1.0
+    before_script:
+    - npm install
     script:
     - commitlint --from=HEAD~1
 
