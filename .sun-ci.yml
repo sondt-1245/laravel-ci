@@ -19,6 +19,7 @@ jobs:
     stage: Test
     image: sunci/commitlint:latest
     script:
+    - ls -la .git
     - cat .git/COMMIT_EDITMSG
     - commitlint -e
 
