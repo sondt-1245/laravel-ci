@@ -17,9 +17,7 @@ stages:
 jobs:
   - name: CommitLint
     stage: Test
-    image: wagoid/commitlint-github-action:2.1.0
-    before_script:
-    - npm install
+    image: sunci/commitlint:latest
     script:
     - commitlint --from=HEAD~1
 
