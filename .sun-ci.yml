@@ -19,9 +19,8 @@ jobs:
     stage: Test
     image: sunci/commitlint:latest
     script:
-    - ls -la .git
-    - cat .git/COMMIT_EDITMSG
-    - commitlint -e
+    - export COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
+    - echo "$COMMIT_MESSAGE" | commitlint
 
   - name: PHPUnit
     stage: Test
