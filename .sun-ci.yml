@@ -19,7 +19,7 @@ jobs:
     stage: Test
     image: sunci/commitlint:latest
     script:
-    - commitlint --from=HEAD~1
+    - commitlint -e
 
   - name: PHPUnit
     stage: Test
