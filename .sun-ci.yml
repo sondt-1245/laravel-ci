@@ -21,6 +21,7 @@ jobs:
     script:
     - export COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
     - echo "$COMMIT_MESSAGE" | commitlint
+    - echo "feat: update ci"
 
   - name: PHPUnit
     stage: Test
