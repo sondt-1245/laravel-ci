@@ -15,6 +15,12 @@ stages:
   - deploy
 
 jobs:
+  - name: CommitLint
+    stage: Test
+    image: wagoid/commitlint-github-action:2.1.0
+    script:
+    - commitlint --from=HEAD~1
+
   - name: PHPUnit
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
