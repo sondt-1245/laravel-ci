@@ -18,6 +18,8 @@ jobs:
   - name: CommitLint
     stage: Test
     image: sunci/commitlint:latest
+    before_script:
+    - echo "module.exports = {extends:\ ['@commitlint/config-conventional']}" > commitlint.config.js
     script:
     - export COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
     - echo "$COMMIT_MESSAGE" | commitlint
