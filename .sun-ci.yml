@@ -19,6 +19,7 @@ jobs:
     stage: Test
     image: sunci/commitlint:latest
     script:
+    - cat .git/COMMIT_EDITMSG
     - commitlint -e
 
   - name: PHPUnit
