@@ -16,15 +16,6 @@ stages:
   - deploy
 
 jobs:
-  - name: CommitLint
-    stage: Test
-    image: sunci/commitlint:latest
-    before_script:
-    - echo "module.exports = {extends:['@commitlint/config-conventional']}" > commitlint.config.js
-    script:
-    - export COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
-    - echo "$COMMIT_MESSAGE" | commitlint
-
   - name: PHPUnit
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
@@ -33,6 +24,7 @@ jobs:
     - APP_ENV=testing
     script:
     - echo "Generate coverage file"
+    - echo 'xxx' > sharedWorkspace
     coverage:
       type: clover
       path: coverage.xml
@@ -55,6 +47,7 @@ jobs:
     - APP_ENV=testing
     script:
     - echo "Generate coverage file"
+    - cat sharedWorkspace
     artifacts:
       name: hahaha
       expires_in: 3 days
