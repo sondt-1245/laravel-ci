@@ -1,4 +1,4 @@
-workspace: true 
+
 registries:
   registry.gitlab.com:
     username: user_$CI_BUILD_ID
@@ -18,6 +18,7 @@ jobs:
     stage: Test
     image: sunasteriskrnd/php-workspace:7.4
     registry: registry.gitlab.com
+    workspace: shared
     environment:
     - APP_ENV=testing
     script:
