@@ -1,5 +1,6 @@
-workspace: false
-
+default:
+  workspace: shared
+  
 registries:
   registry.gitlab.com:
     username: user_$CI_BUILD_ID
