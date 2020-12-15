@@ -1,3 +1,4 @@
+workspace: true
 
 registries:
   registry.gitlab.com:
