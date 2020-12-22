@@ -6226,5 +6226,4 @@
       <metrics loc="19" ncloc="19" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="4" elements="6" coveredelements="4"/>
     </file>
     <metrics files="299" loc="15156" ncloc="12024" classes="269" methods="718" coveredmethods="436" conditionals="0" coveredconditionals="0" statements="3554" coveredstatements="2383" elements="4272" coveredelements="2819"/>
-  </project>
 </coverage>
