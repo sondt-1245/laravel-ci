@@ -27,7 +27,7 @@ jobs:
     - echo 'xxx' > sharedWorkspace
     coverage:
       type: clover
-      path: coverage.xml
+      path: coverage_php.xml
       
   - name: Cobertura
     stage: Test
@@ -39,6 +39,17 @@ jobs:
     coverage:
       type: cobertura
       path: cobertura.xml
+  
+  - name: Jacoco
+    stage: Test
+    image: sunasteriskrnd/php-workspace:7.4
+    environment:
+    - APP_ENV=testing1
+    script:
+    - echo "Generate jacoco  file"
+    coverage:
+      type: jacoco
+      path: coverage.xml
   
   - name: Demo0
     stage: test
