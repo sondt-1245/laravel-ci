@@ -27,7 +27,7 @@ jobs:
     - echo 'xxx' > sharedWorkspace
     coverage:
       type: clover
-      path: coverage_php1.xml
+      path: coverage_php.xml
     artifacts:
       name: aaaa
       expires_in: 3 days
