@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1606104019">	<coverage generated="1593135825">
+  <project timestamp="1606104019">	    <project timestamp="1593135825">
+    <package name="App\Broadcasting\Channels">	        <metrics files="190" loc="8629" ncloc="6803" classes="165" methods="380" coveredmethods="206" conditionals="0" coveredconditionals="0" statements="1853" coveredstatements="1118" elements="2233" coveredelements="1324"/>
+      <file name="/php/app/Broadcasting/Channels/JobChannel.php">	    </project>
