@@ -23,7 +23,7 @@ jobs:
     script:
     - echo "Generate coverage file"
     - echo 'xxx' > sharedWorkspace
-    - ls 
+    - ls -la
     - pwd
     coverage:
       type: clover
@@ -43,7 +43,7 @@ jobs:
     script:
     - echo "Generate coverage file"
     - cat sharedWorkspace
-    - ls 
+    - ls -la
     - pwd
     artifacts:
       name: hahaha
@@ -58,6 +58,8 @@ jobs:
     - APP_ENV=testing1
     script:
     - echo "Generate cobertura2  file"
+    - ls -la
+    - pwd
     coverage:
       type: cobertura
       path: cobertura.xml
@@ -69,6 +71,8 @@ jobs:
     - APP_ENV=testing1
     script:
     - echo "Generate jacoco  file"
+    - ls -la
+    - pwd
     coverage:
       type: jacoco
       path: coverage.xml
