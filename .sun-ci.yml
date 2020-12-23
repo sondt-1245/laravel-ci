@@ -23,11 +23,30 @@ jobs:
     script:
     - echo "Generate coverage file"
     - echo 'xxx' > sharedWorkspace
+    - ls 
+    - pwd
     coverage:
       type: clover
       path: coverage_php.xml
     artifacts:
       name: aaaa
+      expires_in: 3 days
+      paths:
+      - coverage.xml
+      
+  - name: Demo0
+    stage: Test
+    image: sunasteriskrnd/php-workspace:7.4
+    workspace: shared
+    environment:
+    - APP_ENV=testing
+    script:
+    - echo "Generate coverage file"
+    - cat sharedWorkspace
+    - ls 
+    - pwd
+    artifacts:
+      name: hahaha
       expires_in: 3 days
       paths:
       - coverage.xml
@@ -53,18 +72,3 @@ jobs:
     coverage:
       type: jacoco
       path: coverage.xml
-  
-  - name: Demo0
-    stage: Test
-    image: sunasteriskrnd/php-workspace:7.4
-    workspace: shared
-    environment:
-    - APP_ENV=testing
-    script:
-    - echo "Generate coverage file"
-    - cat sharedWorkspace
-    artifacts:
-      name: hahaha
-      expires_in: 3 days
-      paths:
-      - coverage.xml
