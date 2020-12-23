@@ -33,7 +33,7 @@ jobs:
       - coverage.xml
       
   - name: Cobertura
-    stage: Test
+    stage: test
     image: sunasteriskrnd/php-workspace:7.4
     environment:
     - APP_ENV=testing1
@@ -44,7 +44,7 @@ jobs:
       path: cobertura.xml
   
   - name: Jacoco
-    stage: Test
+    stage: test
     image: sunasteriskrnd/php-workspace:7.4
     environment:
     - APP_ENV=testing1
@@ -55,7 +55,7 @@ jobs:
       path: coverage.xml
   
   - name: Demo0
-    stage: test
+    stage: Test
     image: sunasteriskrnd/php-workspace:7.4
     workspace: shared
     environment:
