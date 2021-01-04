@@ -7,24 +7,19 @@ registries:
     password: $PASS
 
 stages:
-  - Test
-  - build
-  - test
-  - deploy
+  - one
+  - two
+  - three
+  - four
 
 jobs:
-  - name: PHPUnit
-    stage: Test
-    image: sunasteriskrnd/php-workspace:7.4
-    registry: registry.gitlab.com
+  - name: One one
+    stage: one
+    image: alpine
     workspace: shared
-    environment:
-    - APP_ENV=testing
     script:
     - echo "Generate coverage file"
     - echo 'xxx' > sharedWorkspace
-    - ls -la
-    - pwd
     coverage:
       type: clover
       path: coverage_php.xml
@@ -33,10 +28,16 @@ jobs:
       expires_in: 3 days
       paths:
       - coverage.xml
+  
+  - name: One two
+    stage: one
+    image: alpine
+    script:
+    - echo "None workspace"
       
-  - name: Demo0
-    stage: Test
-    image: sunasteriskrnd/php-workspace:7.4
+  - name: Two one
+    stage: two
+    image: alpine
     workspace: shared
     environment:
     - APP_ENV=testing
@@ -51,21 +52,18 @@ jobs:
       paths:
       - coverage.xml
       
-  - name: Cobertura
-    stage: test
-    image: sunasteriskrnd/php-workspace:7.4
-    environment:
-    - APP_ENV=testing1
+  - name: Three one
+    stage: three
+    image: alpine
     script:
     - echo "Generate cobertura2  file"
     - ls -la
-    - pwd
     coverage:
       type: cobertura
       path: cobertura.xml
   
-  - name: Jacoco
-    stage: test
+  - name: Four one
+    stage: four
     image: sunasteriskrnd/php-workspace:7.4
     environment:
     - APP_ENV=testing1
@@ -76,3 +74,17 @@ jobs:
     coverage:
       type: jacoco
       path: coverage.xml
+      
+  - name: Four two
+    stage: four
+    image: alpine
+    script:
+    - echo "None workspace"    
+  
+  - name: Four three
+    stage: four
+    image: alpine
+    workspace: shared
+    script:
+    - echo "shared workspace"  
+    - ls -la
