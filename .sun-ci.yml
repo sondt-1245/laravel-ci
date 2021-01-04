@@ -12,9 +12,6 @@ stages:
   - three
   - four
 
-
-workspace: shared
-
 jobs:
   - name: One one
     stage: one
