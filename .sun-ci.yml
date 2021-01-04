@@ -12,7 +12,7 @@ stages:
   - three
   - four
 
-workspace: true
+workspace: f
 
 jobs:
   - name: One one
