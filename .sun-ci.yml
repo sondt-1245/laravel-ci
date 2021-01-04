@@ -12,8 +12,8 @@ stages:
   - three
   - four
 
-default:
-  workspace: false
+
+workspace: false
 
 jobs:
   - name: One one
