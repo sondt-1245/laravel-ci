@@ -19,7 +19,7 @@ jobs:
   - name: One one
     stage: one
     image: alpine
-    workspace: shared
+    workspace: true
     script:
     - echo "Generate coverage file"
     - echo 'xxx' > sharedWorkspace
