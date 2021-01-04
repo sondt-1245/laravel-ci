@@ -18,7 +18,6 @@ jobs:
   - name: One one
     stage: one
     image: alpine
-    workspace: shared
     script:
     - echo "Generate coverage file"
     - echo 'xxx' > sharedWorkspace
@@ -40,7 +39,6 @@ jobs:
   - name: Two one
     stage: two
     image: alpine
-    workspace: shared
     environment:
     - APP_ENV=testing
     script:
@@ -86,7 +84,6 @@ jobs:
   - name: Four three
     stage: four
     image: alpine
-    workspace: shared
     script:
     - echo "shared workspace"  
     - ls -la
