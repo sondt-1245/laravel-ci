@@ -13,7 +13,7 @@ stages:
   - four
 
 
-workspace: true
+workspace: shared
 
 jobs:
   - name: One one
