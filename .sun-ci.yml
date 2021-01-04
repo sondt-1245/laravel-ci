@@ -13,7 +13,7 @@ stages:
   - four
   
 default:
-  workspace: shared
+  workspace: true
 jobs:
   - name: One one
     stage: one
