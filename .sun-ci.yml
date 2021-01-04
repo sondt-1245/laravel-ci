@@ -13,13 +13,13 @@ stages:
   - four
 
 default:
-  workspace: f
+  workspace: false
 
 jobs:
   - name: One one
     stage: one
     image: alpine
-    workspace: f
+    workspace: shared
     script:
     - echo "Generate coverage file"
     - echo 'xxx' > sharedWorkspace
