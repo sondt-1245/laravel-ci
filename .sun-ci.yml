@@ -35,7 +35,7 @@ jobs:
     script:
     - echo "None workspace"
     except:
-      braches:
+      branches:
       - master
       
   - name: Two one
