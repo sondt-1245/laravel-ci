@@ -34,6 +34,9 @@ jobs:
     image: alpine
     script:
     - echo "None workspace"
+    except:
+      braches:
+      - master
       
   - name: Two one
     stage: two
@@ -74,7 +77,9 @@ jobs:
     coverage:
       type: jacoco
       path: coverage.xml
-      
+    depends_on:
+    - One two
+    
   - name: Four two
     stage: four
     image: alpine
