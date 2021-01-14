@@ -49,6 +49,8 @@ jobs:
     - cat sharedWorkspace
     - ls -la
     - pwd
+    depends_on:
+    - One one
     artifacts:
       name: hahaha
       expires_in: 3 days
