@@ -13,6 +13,21 @@ stages:
   - four
 
 jobs:
+  - name: Four one
+    stage: four
+    image: sunasteriskrnd/php-workspace:7.4
+    environment:
+    - APP_ENV=testing1
+    script:
+    - echo "Generate jacoco  file"
+    - ls -la
+    - pwd
+    coverage:
+      type: jacoco
+      path: coverage.xml
+    depends_on:
+    - One two
+    
   - name: One one
     stage: one
     image: alpine
@@ -66,21 +81,6 @@ jobs:
     coverage:
       type: cobertura
       path: cobertura.xml
-  
-  - name: Four one
-    stage: four
-    image: sunasteriskrnd/php-workspace:7.4
-    environment:
-    - APP_ENV=testing1
-    script:
-    - echo "Generate jacoco  file"
-    - ls -la
-    - pwd
-    coverage:
-      type: jacoco
-      path: coverage.xml
-    depends_on:
-    - One two
     
   - name: Four two
     stage: four
