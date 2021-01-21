@@ -1,97 +1,99 @@
-registries:
-  registry.gitlab.com:
-    username: user_$CI_BUILD_ID
-    password: $PASS
-  registry2.gitlab.com:
-    username: $USER
-    password: $PASS
+.only-staging: &staging-commits
+  branches:
+    - develop
+  events:
+    - push
+
+.only-production: &production-commits
+  branches:
+    - master
+  events:
+    - push
+
+.build-and-release-script: &build-and-release
+  stage: build
+  image: docker:stable
+  script:
+    - echo "build:production"
+
+.deploy-to-server-script: &deploy-to-server
+  stage: deploy
+  image: thphuong/ssh-client:latest
+  script:
+    - echo "deploy:production"
+
+#---------------------------------------------------------------------
+# MAIN SCRIPT
+#---------------------------------------------------------------------
+
+workspace: true
 
 stages:
-  - one
-  - two
-  - three
-  - four
+  - install
+  - check
+  - build
+  - deploy
 
 jobs:
-  - name: Four one
-    stage: four
-    image: sunasteriskrnd/php-workspace:7.4
+  install:composer:
+    stage: install
+    image: sunasteriskrnd/php-workspace:7.3
+    script:
+      - echo "install:composer"
+
+  install:yarn:
+    stage: install
+    image: node:10-alpine
+    script:
+      - echo "node:10-alpine"
+
+  # Running tests: phpcs, phpunit...
+  check:phpcs:
+    stage: check
+    image: sunasteriskrnd/php-workspace:7.3
+    allow_failure: true
+    script:
+      - exit 1
+
+  check:phpunit:
+    stage: check
+    image: sunasteriskrnd/php-workspace:7.3
+    script:
+      - echo "check:phpunit"
+
+  check:eslint:
+    stage: check
+    image: node:10-alpine
+    script:
+      - echo "check:eslint"
+
+  check:build:
+    stage: check
+    image: node:10-alpine
+    script:
+      - echo "check:build"
+
+  # Build docker images:
+
+  build:production:
+    <<: *build-and-release
     environment:
-    - APP_ENV=testing1
-    script:
-    - echo "Generate jacoco  file"
-    - ls -la
-    - pwd
-    coverage:
-      type: jacoco
-      path: coverage.xml
-    depends_on:
-    - One two
-    
-  - name: One one
-    stage: one
-    image: alpine
-    workspace: shared
-    script:
-    - echo "Generate coverage file"
-    - echo 'xxx' > sharedWorkspace
-    coverage:
-      type: clover
-      path: coverage_php.xml
-    artifacts:
-      name: aaaa
-      expires_in: 3 days
-      paths:
-      - coverage.xml
-  
-  - name: One two
-    stage: one
-    image: alpine
-    script:
-    - echo "None workspace"
-    except:
-      branches:
-      - master
-      
-  - name: Two one
-    stage: two
-    image: alpine
-    workspace: shared
+      TAG: stable
+      APP_URL: https://accounts.viblo.asia
+      IMAGES_URL: https://images.viblo.asia
+      VIBLO_SUBDOMAIN: "null"
+      VIBLO_CODE_SUBDOMAIN: code
+      VIBLO_CV_SUBDOMAIN: cv
+      VIBLO_CTF_SUBDOMAIN: ctf
+      VIBLO_MAYFEST_SUBDOMAIN: mayfest
+
+  # Apply new images in server:
+
+  deploy:production:
+    <<: *deploy-to-server
     environment:
-    - APP_ENV=testing
-    script:
-    - echo "Generate coverage file"
-    - cat sharedWorkspace
-    - ls -la
-    - pwd
-    depends_on:
-    - One one
-    artifacts:
-      name: hahaha
-      expires_in: 3 days
-      paths:
-      - coverage.xml
-      
-  - name: Three one
-    stage: three
-    image: alpine
-    script:
-    - echo "Generate cobertura2  file"
-    - ls -la
-    coverage:
-      type: cobertura
-      path: cobertura.xml
-    
-  - name: Four two
-    stage: four
-    image: alpine
-    script:
-    - echo "None workspace"    
-  
-  - name: Four three
-    stage: four
-    image: alpine
-    workspace: shared
-    script:
-    - echo "shared workspace"  
-    - ls -la
+      TAG: stable
+      SERVER: 139.162.17.246
+    release:
+      environment: production
+      url: https://accounts.viblo.asia
