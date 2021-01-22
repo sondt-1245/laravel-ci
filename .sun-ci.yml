@@ -15,7 +15,8 @@
   image: docker:stable
   script:
     - echo "build:production"
-    - exit 1
+    - echo $((RANDOM % 4))
+    - exit $(shuf -i 0-1 -n 1)
 
 .deploy-to-server-script: &deploy-to-server
   stage: deploy
