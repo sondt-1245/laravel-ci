@@ -37,18 +37,6 @@ stages:
   - deploy
 
 jobs:
-  install:composer:
-    stage: install
-    image: sunasteriskrnd/php-workspace:7.3
-    script:
-      - echo "install:composer"
-
-  install:yarn:
-    stage: install
-    image: node:10-alpine
-    script:
-      - echo "node:10-alpine"
-
   # Running tests: phpcs, phpunit...
   check:phpcs:
     stage: check
@@ -56,18 +44,6 @@ jobs:
     allow_failure: true
     script:
       - exit 1
-
-  check:phpunit:
-    stage: check
-    image: sunasteriskrnd/php-workspace:7.3
-    script:
-      - echo "check:phpunit"
-
-  check:eslint:
-    stage: check
-    image: node:10-alpine
-    script:
-      - echo "check:eslint"
 
   check:build:
     stage: check
