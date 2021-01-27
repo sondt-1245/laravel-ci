@@ -1,102 +1,77 @@
-default:
-  workspace: shared
+.only-staging: &staging-commits
+  branches:
+    - develop
+  events:
+    - push
+
+.only-production: &production-commits
+  branches:
+    - master
+  events:
+    - push
+
+.build-and-release-script: &build-and-release
+  stage: build
+  image: docker:stable
+  script:
+    - echo "build:production"
+    - echo $((RANDOM % 4))
+    - exit $(shuf -i 0-1 -n 1)
+
+.deploy-to-server-script: &deploy-to-server
+  stage: deploy
+  image: thphuong/ssh-client:latest
+  script:
+    - echo "deploy:production"
+
+#---------------------------------------------------------------------
+# MAIN SCRIPT
+#---------------------------------------------------------------------
+
+workspace: true
 
 stages:
-- Install
-- Build
-- Nothing
-- Test
+  - install
+  - check
+  - build
+  - deploy
 
 jobs:
-- name: Yarn Install
-  image: node:12-alpine
-  stage: Install
-  script:
-  - yarn
+  # Running tests: phpcs, phpunit...
+  check:phpcs:
+    stage: check
+    image: sunasteriskrnd/php-workspace:7.3
+    allow_failure: true
+    script:
+      - exit 1
 
-- name: Run tests
-  stage: Build
-  image: node:12-alpine
-  services:
-  - redis:alpine
-  before_script:
-  - echo before_script
-  script:
-  - cat ignored || true
-  - echo lul > ignored
-  - cat ignored
-  - ls -la /
-  - ls -la /build
-  - ps -a
-  - ulimit -a
-  - sleep 10
-  after_script:
-  - echo yay
-  - ls -la
-  cache:
-  - key: node_modules_$CI_BRANCH
-    paths:
-    - node_modules
+  check:build:
+    stage: check
+    image: node:10-alpine
+    script:
+      - echo "check:build"
 
-- name: Sleep
-  stage: Build
-  image: alpine
-  script:
-  - sleep 10
+  # Build docker images:
 
-- name: Wake up
-  stage: Build
-  workspace: shared
-  image: alpine
-  script:
-  - ls -la
-  - ps -a
-  - nslookup google.com
-  - sleep 10
-  - |
-    cat << EOF | tee coverage.xml
-    <report name="app">
-    <sessioninfo id="b121577-cf370470" start="1608258289869" dump="1608258299862"/>
-    <package name="jp/co/shiseido/cledepeaubeaute/ui/screen/splash">
-    </package>
-    <counter type="INSTRUCTION" missed="3084" covered="6032"/>
-    <counter type="BRANCH" missed="281" covered="202"/>
-    <counter type="LINE" missed="381" covered="885"/>
-    <counter type="COMPLEXITY" missed="410" covered="335"/>
-    <counter type="METHOD" missed="216" covered="283"/>
-    <counter type="CLASS" missed="24" covered="82"/>
-    </report>
-    EOF
-  coverage:
-    type: jacoco
-    path: coverage.xml
-  depends_on:
-  - Sleep again
+  build:production:
+    <<: *build-and-release
+    environment:
+      TAG: stable
+      APP_URL: https://accounts.viblo.asia
+      IMAGES_URL: https://images.viblo.asia
+      VIBLO_SUBDOMAIN: "null"
+      VIBLO_CODE_SUBDOMAIN: code
+      VIBLO_CV_SUBDOMAIN: cv
+      VIBLO_CTF_SUBDOMAIN: ctf
+      VIBLO_MAYFEST_SUBDOMAIN: mayfest
 
-- name: Sleep again
-  stage: Build
-  image: alpine
-  script:
-  - sleep 10
-  only:
-    branches:
-    - never
+  # Apply new images in server:
 
-- name: Sleep twice
-  stage: Test
-  workspace: none
-  image: alpine
-  script:
-  - ls -la
-  - sleep 10
-  depends_on:
-  - Wake up
-
-- name: Say bye!
-  stage: Test
-  image: alpine
-  script:
-  - sleep 10
-  - echo Bye bye
-  depends_on:
-  - Sleep twice
+  deploy:production:
+    <<: *deploy-to-server
+    environment:
+      TAG: stable
+      SERVER: 139.162.17.246
+    release:
+      environment: production
+      url: https://accounts.viblo.asia
