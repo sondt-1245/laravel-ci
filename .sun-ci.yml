@@ -43,7 +43,7 @@ jobs:
     image: sunasteriskrnd/php-workspace:7.3
     allow_failure: true
     script:
-      - exit 1
+      - watch -n 1 date
 
   check:build:
     stage: check
