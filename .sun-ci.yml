@@ -21,6 +21,7 @@ jobs:
   build2:
     stage: build
     image: node:12-alpine
+    when: manual
     services:
       - redis:alpine
     script:
