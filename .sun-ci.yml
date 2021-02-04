@@ -1,62 +1,77 @@
+.only-staging: &staging-commits
+  branches:
+    - develop
+  events:
+    - push
+
+.only-production: &production-commits
+  branches:
+    - master
+  events:
+    - push
+
+.build-and-release-script: &build-and-release
+  stage: build
+  image: docker:stable
+  script:
+    - echo "build:production"
+    - echo $((RANDOM % 4))
+    - exit $(shuf -i 0-1 -n 1)
+
+.deploy-to-server-script: &deploy-to-server
+  stage: deploy
+  image: thphuong/ssh-client:latest
+  script:
+    - echo "deploy:production"
+
+#---------------------------------------------------------------------
+# MAIN SCRIPT
+#---------------------------------------------------------------------
+
+workspace: true
+
 stages:
+  - install
+  - check
   - build
-  - nothing
-  - test
-  - trigger
+  - deploy
 
 jobs:
-  build:
-    stage: build
-    image: node:12-alpine
-    workspace: shared
-    services:
-      - redis:alpine
-    before_script:
-      - echo before_script
+  # Running tests: phpcs, phpunit...
+  check:phpcs:
+    stage: check
+    image: sunasteriskrnd/php-workspace:7.3
+    allow_failure: true
     script:
-      - ls -la /
-      - ulimit -a
-      - sleep 10
-      - echo "shared workspace"
-  build2:
-    stage: build
-    image: node:12-alpine
-    when: manual
-    services:
-      - redis:alpine
-    script:
-      - ls -la /
-      - echo "none workspace"
+      - exit 1
 
-  test:
-    stage: test
-    image: alpine
+  check:build:
+    stage: check
+    image: node:10-alpine
     script:
-      - sleep 10
-      - echo 'except develop'
-  test2:
-    stage: test
-    image: alpine
-    script:
-      - sleep 10
-      - echo "None workspace"
-    except:
-      branches:
-        - master
-  test3:
-    stage: test
-    image: alpine
-    script:
-      - sleep 10
-      - echo 'a'
-    except:
-      branches:
-        - develop
-  
-  trigger1:
-    stage: trigger
-    image: alpine
-    script:
-      - sleep 5
-      - echo hihihihihi
-    when: manual
+      - echo "check:build"
+
+  # Build docker images:
+
+  build:production:
+    <<: *build-and-release
+    environment:
+      TAG: stable
+      APP_URL: https://accounts.viblo.asia
+      IMAGES_URL: https://images.viblo.asia
+      VIBLO_SUBDOMAIN: "null"
+      VIBLO_CODE_SUBDOMAIN: code
+      VIBLO_CV_SUBDOMAIN: cv
+      VIBLO_CTF_SUBDOMAIN: ctf
+      VIBLO_MAYFEST_SUBDOMAIN: mayfest
+
+  # Apply new images in server:
+
+  deploy:production:
+    <<: *deploy-to-server
+    environment:
+      TAG: stable
+      SERVER: 139.162.17.246
+    release:
+      environment: production
+      url: https://accounts.viblo.asia
