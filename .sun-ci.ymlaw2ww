@@ -1,0 +1,189 @@
+.docker-build: &docker-build
+  workspace: none
+  image: docker:stable
+  services:
+  - docker:stable-dind
+  environment:
+    REGISTRY_PATH: harbor.sun-asterisk.vn/sun-ci
+  script:
+  - export UNIQUE_TAG="build-$CI_BUILD_NUMBER"
+  - apk add --no-cache make
+  - echo "$HARBOR_PASSWORD" | docker login $REGISTRY_PATH -u "$HARBOR_USERNAME" --password-stdin
+  - make pull
+  - make all
+  - make release
+
+.helm-deploy: &helm-deploy
+  workspace: none
+  image: alpine/helm
+  entrypoint: []
+  environment:
+    HELM_REPO_URL: https://harbor.sun-asterisk.vn/chartrepo/sun-ci
+    HELM_RELEASE_NAME: sun-ci
+    KUBE_NAMESPACE: sun-ci
+  script:
+  - echo "$KUBE_SERVER_CA" > /usr/local/share/ca-certificates/kube-server.crt
+  - update-ca-certificates
+  - helm repo add
+    --username "$HARBOR_USERNAME"
+    --password "$HARBOR_PASSWORD"
+    sun-ci "$HELM_REPO_URL"
+  - helm upgrade
+    --kube-apiserver "$KUBE_SERVER"
+    --kube-token "$KUBE_TOKEN"
+    --namespace "$KUBE_NAMESPACE"
+    --reuse-values
+    --set sun-ci.image.tag="build-$CI_BUILD_NUMBER"
+    "$HELM_RELEASE_NAME" sun-ci/sun-ci
+
+.master: &master
+  branches:
+  - master
+
+.develop: &develop
+  branches:
+  - develop
+
+.feature: &feature
+  branches:
+  - feature
+
+.pr: &pull-request
+  events:
+  - pull_request
+
+.skip-deploy: &skip-deploy
+  messages:
+  - '[ci skip deploy]'
+
+default:
+  workspace: shared
+
+stages:
+- Install
+- Test
+- Build
+- Deploy
+
+jobs:
+- name: Yarn Install
+  stage: Install
+  image: node:14-alpine
+  script:
+  - yarn
+  cache:
+  - key: node_modules_$CI_BRANCH
+    paths:
+    - web/node_modules
+
+- name: Composer Install
+  stage: Install
+  image: sunasteriskrnd/php-workspace:7.4
+  script:
+  - composer install -d api
+  cache:
+  - key: vendor_$CI_BRANCH
+    paths:
+    - api/vendor
+
+- name: CommitLint
+  stage: Test
+  image: sunci/commitlint:latest
+  before_script:
+    - echo "module.exports = {extends:['@commitlint/config-conventional']}" > commitlint.config.js
+  script:
+    - export COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
+    - echo "$COMMIT_MESSAGE" | commitlint
+
+- name: ESLint
+  stage: Test
+  image: node:14-alpine
+  script:
+  - yarn lint --max-warnings 0
+
+- name: PHP CodeSniffer
+  stage: Test
+  image: sunasteriskrnd/php-workspace:7.4
+  script:
+  - composer sniff -d api
+
+- name: PHPUnit
+  stage: Test
+  image: sunasteriskrnd/php-workspace:7.4
+  services:
+  - redis:alpine
+  - image: postgres:12-alpine
+    environment:
+    - POSTGRES_DB=sun_ci
+    - POSTGRES_USER=sun_ci
+    - POSTGRES_PASSWORD=secret
+  environment:
+  - APP_ENV=testing
+  script:
+  - docker-php-ext-disable xdebug
+  - cd api
+  - cp .env.example .env.testing
+  - php artisan key:generate
+  - php artisan migrate
+  - composer coverage
+  coverage:
+    type: clover
+    path: api/coverage.xml
+  artifacts:
+    paths:
+    - api/coverage
+    expires_in: 3 days
+
+- name: Feature build
+  stage: Build
+  before_script:
+  - export TAG=$(echo $CI_BRANCH | sed -E 's/[^[:alnum:]]+/_/g')
+  only: *feature
+  except: *pull-request
+  <<: *docker-build
+
+- name: Staging build
+  stage: Build
+  before_script:
+  - export TAG=develop
+  only: *develop
+  except: *pull-request
+  <<: *docker-build
+
+- name: Production build
+  stage: Build
+  before_script:
+  - export TAG=stable
+  only: *master
+  except: *pull-request
+  <<: *docker-build
+
+- name: Staging deploy
+  stage: Deploy
+  before_script:
+  - export KUBE_SERVER="$STAGING_KUBE_SERVER"
+  - export KUBE_SERVER_CA="$STAGING_KUBE_SERVER_CA"
+  - export KUBE_TOKEN="$STAGING_KUBE_TOKEN"
+  <<: *helm-deploy
+  only: *develop
+  except:
+    <<: *pull-request
+    <<: *skip-deploy
+  release:
+    environment: staging
+    url: https://ci-stg.sun-asterisk.vn
+
+- name: Production deploy
+  stage: Deploy
+  before_script:
+  - export KUBE_SERVER="$PRODUCTION_KUBE_SERVER"
+  - export KUBE_SERVER_CA="$PRODUCTION_KUBE_SERVER_CA"
+  - export KUBE_TOKEN="$PRODUCTION_KUBE_TOKEN"
+  <<: *helm-deploy
+  only: *master
+  except:
+    <<: *pull-request
+    <<: *skip-deploy
+  release:
+    environment: production
+    url: https://ci.sun-asterisk.com
