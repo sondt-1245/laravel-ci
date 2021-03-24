@@ -9,7 +9,7 @@ stages:
 
 jobs:
 - name: Yarn Install
-  image: node:12-alpine
+  image: node12-alpine
   stage: Install
   script:
   - yarn
