@@ -9,7 +9,7 @@ stages:
 
 jobs:
 - name: Yarn Install
-  image: node12-alpine
+  image: node:12-alpine
   stage: Install
   script:
   - yarn
@@ -70,11 +70,9 @@ jobs:
   coverage:
     type: jacoco
     path: coverage.xml
-  depends_on:
-  - Sleep again
 
 - name: Sleep again
-  stage: Build
+  stage: Test
   image: alpine
   script:
   - sleep 10
@@ -89,8 +87,6 @@ jobs:
   script:
   - ls -la
   - sleep 10
-  depends_on:
-  - Say bye!
 
 - name: Say bye!
   stage: Test
@@ -98,5 +94,3 @@ jobs:
   script:
   - sleep 10
   - echo Bye bye
-  depends_on:
-  - Sleep twice
