@@ -84,6 +84,7 @@ jobs:
   stage: Test
   workspace: none
   image: alpine
+  when: manual
   script:
   - ls -la
   - sleep 10
