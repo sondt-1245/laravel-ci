@@ -1,97 +1,77 @@
-default:
-  workspace: shared
+workspace: true
 
 stages:
-- Install
-- Build
-- Nothing
-- Test
+  - build
+  - test
+  - deploy
 
 jobs:
-- name: Yarn Install
-  image: node:12-alpine
-  stage: Install
-  script:
-  - yarn
-
-- name: Run tests
-  stage: Build
-  image: node:12-alpine
-  services:
-  - redis:alpine
+- name: build:prepare
+  stage: build
+  image: sujoydatta/ac_docker_image:stable
+  environment:
+    TWO_FACTOR_KEY: 03238c9f03a392470c1608d0961b7941d455864995f7373ba4bb378133619bb11d17105af8b4901844f2ea0305fe903d09879ee8dc9ac2b66cf28093b012a5e3
+    ENCRYPTION_KEY: "A1B2C3D4E5F6G4"
   before_script:
-  - echo before_script
+    - sleep 10
   script:
-  - cat ignored || true
-  - echo lul > ignored
-  - cat ignored
-  - ls -la /
-  - ls -la /build
-  - ps -a
-  - ulimit -a
-  - sleep 10
-  after_script:
-  - echo yay
-  - ls -la
+    - echo "Done"
+    - sleep 10
   cache:
-  - key: node_modules_$CI_BRANCH
-    paths:
-    - node_modules
+    - key: vendor_$CI_BRANCH
+      paths:
+        - vendor/bundle
 
-- name: Sleep
-  stage: Build
-  image: alpine
+- name: test:rspec
+  stage: test
+  image: sujoydatta/ac_docker_image:stable
+  environment:
+    TWO_FACTOR_KEY: 03238c9f03a392470c1608d0961b7941d455864995f7373ba4bb378133619bb11d17105af8b4901844f2ea0305fe903d09879ee8dc9ac2b66cf28093b012a5e3
+    ENCRYPTION_KEY: "A1B2C3D4E5F6G4"
+  services:
+    - image: mysql:5.7.22
+      name: mysql_test
+      environment:
+        MYSQL_DATABASE: ac_test
+        MYSQL_USER: test
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: root
+  before_script:
+    - sleep 10
   script:
-  - sleep 10
-
-- name: Wake up
-  stage: Build
-  workspace: shared
-  image: alpine
-  script:
-  - ls -la
-  - ps -a
-  - nslookup google.com
-  - sleep 10
-  - |
-    cat << EOF | tee coverage.xml
-    <report name="app">
-    <sessioninfo id="b121577-cf370470" start="1608258289869" dump="1608258299862"/>
-    <package name="jp/co/shiseido/cledepeaubeaute/ui/screen/splash">
-    </package>
-    <counter type="INSTRUCTION" missed="3084" covered="6032"/>
-    <counter type="BRANCH" missed="281" covered="202"/>
-    <counter type="LINE" missed="381" covered="885"/>
-    <counter type="COMPLEXITY" missed="410" covered="335"/>
-    <counter type="METHOD" missed="216" covered="283"/>
-    <counter type="CLASS" missed="24" covered="82"/>
-    </report>
-    EOF
-  coverage:
-    type: jacoco
-    path: coverage.xml
-
-- name: Sleep again
-  stage: Test
-  image: alpine
-  script:
-  - sleep 10
+    - echo "Done"
+    - sleep 10
   only:
     branches:
-    - never
+      - develop_staff_staging
+      - develop_staff
 
-- name: Sleep twice
-  stage: Test
-  workspace: none
-  image: alpine
-  when: manual
+- name: deploy:develop_staff_staging
+  stage: deploy
+  image: sunci/ruby:2.5.1
+  before_script:
+    - sleep 10
   script:
-  - ls -la
-  - sleep 10
+    - echo "Done"
+    - sleep 10
+  only:
+    branches:
+      - develop_staff_staging
+  except:
+    events:
+      - pull_request
 
-- name: Say bye!
-  stage: Test
-  image: alpine
+- name: deploy:develop_staff
+  stage: deploy
+  image: sunci/ruby:2.5.1
+  before_script:
+    - sleep 10
   script:
-  - sleep 10
-  - echo Bye bye
+    - echo "Done"
+    - sleep 10
+  only:
+    branches:
+      - develop_staff
+  except:
+    events:
+      - pull_request
