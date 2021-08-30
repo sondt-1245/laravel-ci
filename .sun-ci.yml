@@ -17,7 +17,7 @@ jobs:
   image: node:12-alpine
   stage: Install
   script:
-  - echo "yarinstall"
+  - echo "yarn install"
 
 # - name: Run tests
 #   stage: Build
