@@ -43,6 +43,9 @@ jobs:
   image: alpine
   script:
   - sleep 10
+  except:
+    messages:
+    - '[ci skip deploy]'
 
 - name: Wake up
   stage: Build
