@@ -1,5 +1,10 @@
 default:
   workspace: shared
+  
+.skip-deploy: &skip-deploy
+  messages:
+  - '[ci skip deploy]'
+
 
 stages:
 - Install
@@ -44,9 +49,7 @@ jobs:
   script:
   - sleep 10
   except:
-    messages:
-    - '[ci skip deploy]'
-
+    <<: *skip-deploy
 - name: Wake up
   stage: Build
   workspace: shared
