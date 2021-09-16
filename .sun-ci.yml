@@ -1,5 +1,5 @@
 default:
-  workspace: shared
+  workspace: none
   
 .skip-deploy: &skip-deploy
   messages:
@@ -19,11 +19,11 @@ jobs:
   script:
   - cat large_log.logs
 
-- name: Yarn Install
-  image: node:12-alpine
-  stage: Install
-  script:
-  - echo "yarn install"
+# - name: Yarn Install
+#   image: node:12-alpine
+#   stage: Install
+#   script:
+#   - echo "yarn install"
 
 # - name: Run tests
 #   stage: Build
@@ -49,14 +49,14 @@ jobs:
 #     paths:
 #     - node_modules
 
-- name: Sleep
-  stage: Build
-  image: alpine
-  script:
-  - sleep 10
-  - echo $CI_COMMIT_MESSAGE
-  except:
-    <<: *skip-deploy
+# - name: Sleep
+#   stage: Build
+#   image: alpine
+#   script:
+#   - sleep 10
+#   - echo $CI_COMMIT_MESSAGE
+#   except:
+#     <<: *skip-deploy
     
     
 # - name: Wake up
