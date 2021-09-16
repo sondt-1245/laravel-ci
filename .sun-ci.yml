@@ -13,6 +13,12 @@ stages:
 - Test
 
 jobs:
+- name: Large logs
+  image: node:12-alpine
+  stage: Install
+  script:
+  - cat large_log.logs
+
 - name: Yarn Install
   image: node:12-alpine
   stage: Install
