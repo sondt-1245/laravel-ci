@@ -1,9 +1,112 @@
+default:
+  workspace: none
+  
+.skip-deploy: &skip-deploy
+  messages:
+  - '[ci skip deploy]'
+
+
 stages:
-  - recipe
+- Install
+- Build
+- Nothing
+- Test
 
 jobs:
-  - name: recipe
-    stage: recipe
-    use: myrecipe2@1.0.0
-    with:
-      script: 1
+- name: Large logs
+  image: node:12-alpine
+  stage: Install
+  script:
+  - cat large_log.logs
+
+# - name: Yarn Install
+#   image: node:12-alpine
+#   stage: Install
+#   script:
+#   - echo "yarn install"
+
+# - name: Run tests
+#   stage: Build
+#   image: node:12-alpine
+#   services:
+#   - redis:alpine
+#   before_script:
+#   - echo before_script
+#   script:
+#   - cat ignored || true
+#   - echo lul > ignored
+#   - cat ignored
+#   - ls -la /
+#   - ls -la /build
+#   - ps -a
+#   - ulimit -a
+#   - sleep 10
+#   after_script:
+#   - echo yay
+#   - ls -la
+#   cache:
+#   - key: node_modules_$CI_BRANCH
+#     paths:
+#     - node_modules
+
+# - name: Sleep
+#   stage: Build
+#   image: alpine
+#   script:
+#   - sleep 10
+#   - echo $CI_COMMIT_MESSAGE
+#   except:
+#     <<: *skip-deploy
+    
+    
+# - name: Wake up
+#   stage: Build
+#   workspace: shared
+#   image: alpine
+#   script:
+#   - ls -la
+#   - ps -a
+#   - nslookup google.com
+#   - sleep 10
+#   - |
+#     cat << EOF | tee coverage.xml
+#     <report name="app">
+#     <sessioninfo id="b121577-cf370470" start="1608258289869" dump="1608258299862"/>
+#     <package name="jp/co/shiseido/cledepeaubeaute/ui/screen/splash">
+#     </package>
+#     <counter type="INSTRUCTION" missed="3084" covered="6032"/>
+#     <counter type="BRANCH" missed="281" covered="202"/>
+#     <counter type="LINE" missed="381" covered="885"/>
+#     <counter type="COMPLEXITY" missed="410" covered="335"/>
+#     <counter type="METHOD" missed="216" covered="283"/>
+#     <counter type="CLASS" missed="24" covered="82"/>
+#     </report>
+#     EOF
+#   coverage:
+#     type: jacoco
+#     path: coverage.xml
+
+# - name: Sleep again
+#   stage: Test
+#   image: alpine
+#   script:
+#   - sleep 10
+#   only:
+#     branches:
+#     - never
+
+# - name: Sleep twice
+#   stage: Test
+#   workspace: none
+#   image: alpine
+#   when: manual
+#   script:
+#   - ls -la
+#   - sleep 10
+
+# - name: Say bye!
+#   stage: Test
+#   image: alpine
+#   script:
+#   - sleep 10
+#   - echo Bye bye
