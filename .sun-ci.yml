@@ -1,5 +1,5 @@
 default:
-  workspace: shared
+  workspace: none
   
 .skip-deploy: &skip-deploy
   messages:
@@ -13,11 +13,19 @@ stages:
 - Test
 
 jobs:
-- name: Large logs
+- name: Large logs33
   image: node:12-alpine
   stage: Install
   script:
-  - cat large_log.logs
+  - echo "first"
+  - sleep 10
+  
+- name: Large logs 22
+  image: node:12-alpine
+  stage: Build
+  script:
+  - echo "second"
+  - sleep 20
 
 # - name: Yarn Install
 #   image: node:12-alpine
