@@ -13,7 +13,7 @@ stages:
 - Test
 
 jobs:
-- name: Large logs
+- name: Large logs33
   image: node:12-alpine
   stage: Install
   script:
