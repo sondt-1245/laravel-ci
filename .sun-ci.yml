@@ -20,7 +20,7 @@ jobs:
   - echo "first"
   - sleep 20
   
-- name: Large logs
+- name: Large logs 2
   image: node:12-alpine
   stage: Build
   script:
