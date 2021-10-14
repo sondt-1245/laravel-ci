@@ -7,12 +7,29 @@ default:
 
 
 stages:
+- Test1
 - Install
 - Build
 - Nothing
 - Test
 
 jobs:
+- name: test_r
+  stage: Test1
+  script:
+    - echo ok
+  image: alpine
+  test_result:
+    type: junit
+    path: coverage/junit.xml
+  coverage:
+    type: clover
+    path: coverage/coverage.xml
+  artifacts:
+    name: ar
+    paths:
+    - coverage
+    expires_in: 3 days
 - name: Large logs
   image: node:12-alpine
   stage: Install
