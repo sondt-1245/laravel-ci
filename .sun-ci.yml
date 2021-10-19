@@ -36,11 +36,11 @@ jobs:
   script:
   - cat large_log.logs
 
-# - name: Yarn Install
-#   image: node:12-alpine
-#   stage: Install
-#   script:
-#   - echo "yarn install"
+- name: Yarn Install
+  image: node:12-alpine
+  stage: Install
+  script:
+  - echo "yarn install"
 
 # - name: Run tests
 #   stage: Build
