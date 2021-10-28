@@ -23,11 +23,11 @@ jobs:
     - sleep 10
   image: alpine
   cache:
-    key:
-      files:
-      - .sun-ci.yml
+    - key:
+        files:
+        - .sun-ci.yml
       paths:
-      - cache
+        - cache
   test_result:
     type: junit
     path: junit.xml
