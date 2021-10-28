@@ -14,14 +14,14 @@ stages:
 - Test
 
 jobs:
-- name: test_r
+- name: Test Result
   stage: Test1
   script:
     - echo ok
   image: alpine
   test_result:
     type: junit
-    path: coverage/junit.xml
+    path: junit.xml
   coverage:
     type: clover
     path: coverage/coverage.xml
