@@ -18,7 +18,16 @@ jobs:
   stage: Test1
   script:
     - echo ok
+    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
+    - cat cache
+    - sleep 10
   image: alpine
+  cache:
+    key:
+      files:
+      - .sun-ci.yml
+      paths:
+      - cache
   test_result:
     type: junit
     path: junit.xml
@@ -30,17 +39,17 @@ jobs:
     paths:
     - coverage
     expires_in: 3 days
-- name: Large logs
-  image: node:12-alpine
-  stage: Install
-  script:
-  - cat large_log.logs
+# - name: Large logs
+#   image: node:12-alpine
+#   stage: Install
+#   script:
+#   - cat large_log.logs
 
-- name: Yarn Install
-  image: node:12-alpine
-  stage: Install
-  script:
-  - echo "yarn install"
+# - name: Yarn Install
+#   image: node:12-alpine
+#   stage: Install
+#   script:
+#   - echo "yarn install"
 
 # - name: Run tests
 #   stage: Build
