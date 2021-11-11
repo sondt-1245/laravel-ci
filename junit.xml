@@ -1,5 +1,5 @@
 <testsuites>
-<testsuite name="" tests="653" assertions="3717" errors="3" warnings="0" failures="0" skipped="0" time="27.817690">
+<testsuite name="" tests="653" assertions="3717" errors="3" warnings="0" failures="0" skipped="0" time="0.23">
 <testsuite name="Unit" tests="547" assertions="2705" errors="3" warnings="0" failures="0" skipped="0" time="20.535421">
 <testsuite name="Tests\Unit\Enums\Category\CategoryStatusTest" file="/build/framgia/viblo-learning-api/tests/Unit/Enums/Category/CategoryStatusTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.044412">
 <testcase name="test_it_can_get_category_status_values" class="Tests\Unit\Enums\Category\CategoryStatusTest" classname="Tests.Unit.Enums.Category.CategoryStatusTest" file="/build/framgia/viblo-learning-api/tests/Unit/Enums/Category/CategoryStatusTest.php" line="11" assertions="1" time="0.044412"/>
