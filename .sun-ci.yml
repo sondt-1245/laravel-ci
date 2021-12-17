@@ -14,6 +14,34 @@ stages:
 - Test
 
 jobs:
+- name: Test Result skipped
+  stage: Test1
+  script:
+    - echo ok
+    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
+    - cat cache
+    - sleep 10
+  image: alpine
+  cache:
+    - key:
+        files:
+        - .sun-ci.yml
+      paths:
+        - cache
+  test_result:
+    type: junit
+    path: junit.xml
+  coverage:
+    type: clover
+    path: coverage/coverage.xml
+  artifacts:
+    name: ar
+    paths:
+    - coverage
+    expires_in: 3 days
+  except:
+      messages:
+        - '[skip_deploy]'
 - name: Test Result
   stage: Test1
   script:
