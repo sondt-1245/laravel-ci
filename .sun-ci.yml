@@ -40,8 +40,7 @@ jobs:
     - coverage
     expires_in: 3 days
   except:
-      messages:
-        - '[skip_deploy]'
+    <<: *skip-deploy
 - name: Test Result
   stage: Test1
   script:
