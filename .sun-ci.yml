@@ -3,7 +3,7 @@ default:
   
 .skip-deploy: &skip-deploy
   messages:
-  - '/[ci skip deploy]/'
+  - /[ci skip deploy]/
 
 
 stages:
