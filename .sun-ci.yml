@@ -17,9 +17,8 @@ jobs:
 - name: Test Result
   stage: Test1
   script:
-    - echo ok
-    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
-    - cat cache
+    - cat unformat_str.txt
+    - echo "hahaha"
     - sleep 10
   image: alpine
   cache:
