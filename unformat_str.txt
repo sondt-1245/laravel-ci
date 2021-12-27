@@ -1,0 +1,3476 @@
+               ^
+      147 |         const findPharmacyPatient = await getRepository(PharmacyPatientEntity)
+      148 |           .createQueryBuilder()
+      149 |           .where({ patient, pharmacistB })
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:146:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient without option
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      167 |       it('update patient without option', async () => {
+      168 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 169 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      170 |
+      171 |         expect(status).to.equal(200);
+      172 |         expect(updateFLCPatient.kanjiName).to.equal('Patient kanji 1');
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:169:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient with kanjiName length is 254
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      185 |         variables.updatePatientDTO.kanjiName = 'a'.repeat(254);
+      186 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 187 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      188 |
+      189 |         expect(status).to.equal(200);
+      190 |         expect(updateFLCPatient.kanjiName).to.equal('a'.repeat(254));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:187:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient with kanjiName length is 255
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      194 |         variables.updatePatientDTO.kanjiName = 'a'.repeat(255);
+      195 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 196 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      197 |
+      198 |         expect(status).to.equal(200);
+      199 |         expect(updateFLCPatient.kanjiName).to.equal('a'.repeat(255));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:196:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient with kanaName length is 254
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      203 |         variables.updatePatientDTO.kanaName = 'a'.repeat(254);
+      204 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 205 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      206 |
+      207 |         expect(status).to.equal(200);
+      208 |         expect(updateFLCPatient.kanaName).to.equal('a'.repeat(254));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:205:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient with kanaName length is 255
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      212 |         variables.updatePatientDTO.kanaName = 'a'.repeat(255);
+      213 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 214 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      215 |
+      216 |         expect(status).to.equal(200);
+      217 |         expect(updateFLCPatient.kanaName).to.equal('a'.repeat(255));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:214:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient with phone length is 254
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      221 |         variables.updatePatientDTO.phone = 'a'.repeat(254);
+      222 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 223 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      224 |
+      225 |         expect(status).to.equal(200);
+      226 |         expect(updateFLCPatient.phone).to.equal('a'.repeat(254));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:223:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › update patient with phone length is 255
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      230 |         variables.updatePatientDTO.phone = 'a'.repeat(255);
+      231 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 232 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      233 |
+      234 |         expect(status).to.equal(200);
+      235 |         expect(updateFLCPatient.phone).to.equal('a'.repeat(255));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:232:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › should return patient if pharmacist is undefined
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      239 |         variables.updatePatientDTO.pharmacist = undefined;
+      240 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 241 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      242 |
+      243 |         expect(status).to.equal(200);
+      244 |         expect(updateFLCPatient.pharmacist.id).to.be.eql(pharmacistB.id);
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:241:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › Should return success when update patient with the note has a length is 2000
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      249 |         variables.updatePatientDTO.note = 'a'.repeat(2000);
+      250 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 251 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      252 |
+      253 |         expect(status).to.equal(200);
+      254 |         expect(updateFLCPatient.note).to.equal('a'.repeat(2000));
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:251:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Success › Update without pharmacyPatients › should return patient if pharmacist is NULL
+
+    TypeError: Cannot destructure property 'updateFLCPatient' of 'res.data' as it is undefined.
+
+      258 |         variables.updatePatientDTO.pharmacist = null;
+      259 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 260 |         const { updateFLCPatient } = res.data;
+          |                 ^
+      261 |
+      262 |         expect(status).to.equal(200);
+      263 |         expect(updateFLCPatient.pharmacist).to.be.eql(null);
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:260:17)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › should return error if current pharmacist is Other role in current Pharamcy
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      286 |       const errors = formatError(2003, 'アクセスが禁止されています。');
+      287 |
+    > 288 |       expect(status).to.equal(403);
+          |                         ^
+      289 |       expect(res).to.eql(errors);
+      290 |     });
+      291 |
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:288:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › should return error if current company is gooco company
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      306 |       const errors = formatError(2003, 'アクセスが禁止されています。');
+      307 |
+    > 308 |       expect(status).to.equal(403);
+          |                         ^
+      309 |       expect(res).to.eql(errors);
+      310 |     });
+      311 |
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:308:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with id is wrong format
+
+    Expected value   404
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 404
+
+      323 |       );
+      324 |
+    > 325 |       expect(status).to.equal(404);
+          |                         ^
+      326 |       expect(res).to.eql(errors);
+      327 |     });
+      328 |
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:325:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with id is exists
+
+    Expected value   404
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 404
+
+      334 |       );
+      335 |
+    > 336 |       expect(status).to.equal(404);
+          |                         ^
+      337 |       expect(res).to.eql(errors);
+      338 |     });
+      339 |
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:336:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with id not managed by pharmacy
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      344 |         2003, 'アクセスが禁止されています。',
+      345 |       );
+    > 346 |       expect(status).to.equal(403);
+          |                         ^
+      347 |       expect(res).to.eql(errors);
+      348 |     });
+      349 |
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:346:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with kanjiName length is 256
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "kanjiName"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "kanjiName",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      364 |
+      365 |       expect(status).to.equal(400);
+    > 366 |       expect(res).to.eql(errors);
+          |                      ^
+      367 |     });
+      368 |
+      369 |     it('update patient with kanaName invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:366:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with kanaName length is 256
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "kanaName"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "kanaName",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      383 |
+      384 |       expect(status).to.equal(400);
+    > 385 |       expect(res).to.eql(errors);
+          |                      ^
+      386 |     });
+      387 |
+      388 |     it('Should return an error when note has a length over 2000 characters', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:385:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › Should return an error when note has a length over 2000 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "note"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "note",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      394 |
+      395 |       expect(status).to.equal(400);
+    > 396 |       expect(res).to.eql(errors);
+          |                      ^
+      397 |     });
+      398 |
+      399 |     it('update patient with gender is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:396:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with birthday is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 1010, "entity": "PatientEntity", "index": null, "message": "日付を入力してください。", "property": "birthday"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1010,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "日付を入力してください。",
+    -       "property": "birthday",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      413 |       );
+      414 |       expect(status).to.equal(400);
+    > 415 |       expect(res).to.eql(errors);
+          |                      ^
+      416 |     });
+      417 |
+      418 |     it('update patient with birthday is null', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:415:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with birthday is null
+
+    Expected value   {"data": null, "errors": [{"code": 1010, "entity": "PatientEntity", "index": null, "message": "日付を入力してください。", "property": "birthday"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1010,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "日付を入力してください。",
+    -       "property": "birthday",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      424 |       );
+      425 |       expect(status).to.equal(400);
+    > 426 |       expect(res).to.eql(errors);
+          |                      ^
+      427 |     });
+      428 |
+      429 |     it('update patient with birthday is wrong format', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:426:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with birthday is wrong format
+
+    Expected value   {"data": null, "errors": [{"code": 1010, "entity": "PatientEntity", "index": null, "message": "日付を入力してください。", "property": "birthday"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1010,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "日付を入力してください。",
+    -       "property": "birthday",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      435 |       );
+      436 |       expect(status).to.equal(400);
+    > 437 |       expect(res).to.eql(errors);
+          |                      ^
+      438 |     });
+      439 |
+      440 |     it('Should return error if the birthday is from future', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:437:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › Should return error if the birthday is from future
+
+    Expected value   {"data": null, "errors": [{"code": 2044, "entity": "PatientEntity", "index": null, "message": "将来の日付にできません。", "property": "birthday"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2044,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "将来の日付にできません。",
+    -       "property": "birthday",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      451 |
+      452 |       expect(status).to.equal(400);
+    > 453 |       expect(res).to.eql(errors);
+          |                      ^
+      454 |     });
+      455 |
+      456 |     it('update patient with phone is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:453:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with phone length is 256
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "phone"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "phone",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      470 |
+      471 |       expect(status).to.equal(400);
+    > 472 |       expect(res).to.eql(errors);
+          |                      ^
+      473 |     });
+      474 |
+      475 |     it('update patient with commonSendTime is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:472:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with commonSendTime is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "commonSendTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "commonSendTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      481 |       );
+      482 |       expect(status).to.equal(400);
+    > 483 |       expect(res).to.eql(errors);
+          |                      ^
+      484 |     });
+      485 |
+      486 |     it('update patient with commonSendTime is wrong format', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:483:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with commonSendTime is wrong format
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "commonSendTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "commonSendTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      492 |       );
+      493 |       expect(status).to.equal(400);
+    > 494 |       expect(res).to.eql(errors);
+          |                      ^
+      495 |     });
+      496 |
+      497 |     it('update patient with noonDosingTime is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:494:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with noonDosingTime is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "noonDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "noonDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      503 |       );
+      504 |       expect(status).to.equal(400);
+    > 505 |       expect(res).to.eql(errors);
+          |                      ^
+      506 |     });
+      507 |
+      508 |     it('update patient with noonDosingTime is wrong format', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:505:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with noonDosingTime is wrong format
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "noonDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "noonDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      514 |       );
+      515 |       expect(status).to.equal(400);
+    > 516 |       expect(res).to.eql(errors);
+          |                      ^
+      517 |     });
+      518 |
+      519 |     it('update patient with afternoonDosingTime is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:516:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with afternoonDosingTime is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "afternoonDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "afternoonDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      525 |       );
+      526 |       expect(status).to.equal(400);
+    > 527 |       expect(res).to.eql(errors);
+          |                      ^
+      528 |     });
+      529 |
+      530 |     it('update patient with afternoonDosingTime is wrong format', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:527:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with afternoonDosingTime is wrong format
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "afternoonDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "afternoonDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      536 |       );
+      537 |       expect(status).to.equal(400);
+    > 538 |       expect(res).to.eql(errors);
+          |                      ^
+      539 |     });
+      540 |
+      541 |     it('update patient with sleepDosingTime is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:538:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with sleepDosingTime is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "sleepDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "sleepDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      547 |       );
+      548 |       expect(status).to.equal(400);
+    > 549 |       expect(res).to.eql(errors);
+          |                      ^
+      550 |     });
+      551 |
+      552 |     it('update patient with sleepDosingTime is wrong format', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:549:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with sleepDosingTime is wrong format
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "sleepDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "sleepDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      558 |       );
+      559 |       expect(status).to.equal(400);
+    > 560 |       expect(res).to.eql(errors);
+          |                      ^
+      561 |     });
+      562 |
+      563 |     it('update patient with morningDosingTime is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:560:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with morningDosingTime is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "morningDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "morningDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      569 |       );
+      570 |       expect(status).to.equal(400);
+    > 571 |       expect(res).to.eql(errors);
+          |                      ^
+      572 |     });
+      573 |
+      574 |     it('update patient with morningDosingTime is wrong format', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:571:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › update patient with morningDosingTime is wrong format
+
+    Expected value   {"data": null, "errors": [{"code": 2016, "entity": "PatientEntity", "index": null, "message": "時間はHH：MM形式にしてください。", "property": "morningDosingTime"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "時間はHH：MM形式にしてください。",
+    -       "property": "morningDosingTime",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      580 |       );
+      581 |       expect(status).to.equal(400);
+    > 582 |       expect(res).to.eql(errors);
+          |                      ^
+      583 |     });
+      584 |
+      585 |     it('should return error if assignee is hidden', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:582:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › should return error if assignee is hidden
+
+    Expected value   {"data": null, "errors": [{"code": 2030, "entity": "PatientEntity", "index": null, "message": "この薬剤師は表示させられていません。", "property": "Assignee"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2030,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "この薬剤師は表示させられていません。",
+    -       "property": "Assignee",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      594 |
+      595 |       expect(status).to.equal(400);
+    > 596 |       expect(res).to.eql(errors);
+          |                      ^
+      597 |     });
+      598 |
+      599 |     it('should return error if assignee is inactive', async () => {
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:596:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Update FLC Patient › Error › should return error if assignee is inactive
+
+    Expected value   {"data": null, "errors": [{"code": 2001, "entity": "PatientEntity", "index": null, "message": "データが見つかりません。", "property": "pharmacist"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2001,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "データが見つかりません。",
+    -       "property": "pharmacist",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      608 |
+      609 |       expect(status).to.equal(400);
+    > 610 |       expect(res).to.eql(errors);
+          |                      ^
+      611 |     });
+      612 |   });
+      613 | });
+
+      at Object.<anonymous> (test/integration/patient/update-flc-patient.spec.ts:610:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+FAIL test/integration/pharmacist/master-templates.spec.ts (11.29s, 2654 MB heap size)
+  ● Query master template list of category in pharmacist › Success › Sort › Should sort shortcut in ASC order
+
+    Expected value   "5c387a9e-4224-45f8-830e-23f82a9a81e3"
+    Received:
+      "46c699cc-ca71-4305-8a1e-a6a0bbf8f77d"
+
+    Message:
+      expected '46c699cc-ca71-4305-8a1e-a6a0bbf8f77d' to equal '5c387a9e-4224-45f8-830e-23f82a9a81e3'
+
+    Difference:
+
+    - Expected
+    + Received
+
+    - 5c387a9e-4224-45f8-830e-23f82a9a81e3
+    + 46c699cc-ca71-4305-8a1e-a6a0bbf8f77d
+
+      354 |
+      355 |         expect(status).to.equal(200);
+    > 356 |         expect(items[0].id).to.equal(categoryInPharmacyMasterTemplate2.id);
+          |                                ^
+      357 |         expect(items[1].id).to.equal(masterForButtonTemplate.id);
+      358 |         expect(items[2].id).to.equal(masterTemplate1.id);
+      359 |         expect(items[3].id).to.equal(categoryInCompanyMasterTemplate4.id);
+
+      at Object.<anonymous> (test/integration/pharmacist/master-templates.spec.ts:356:32)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Query master template list of category in pharmacist › Success › Sort › Should sort used count in DESC order
+
+    Expected value   "86213c7c-ba90-4e44-ac75-e90819be9ce1"
+    Received:
+      "46c699cc-ca71-4305-8a1e-a6a0bbf8f77d"
+
+    Message:
+      expected '46c699cc-ca71-4305-8a1e-a6a0bbf8f77d' to equal '86213c7c-ba90-4e44-ac75-e90819be9ce1'
+
+    Difference:
+
+    - Expected
+    + Received
+
+    - 86213c7c-ba90-4e44-ac75-e90819be9ce1
+    + 46c699cc-ca71-4305-8a1e-a6a0bbf8f77d
+
+      376 |         expect(items[0].id).to.equal(categoryInCompanyMasterTemplate1.id);
+      377 |         expect(items[0].usedCount).to.equal(15);
+    > 378 |         expect(items[1].id).to.equal(categoryInPharmacyMasterTemplate3.id);
+          |                                ^
+      379 |         expect(items[1].usedCount).to.equal(13);
+      380 |         expect(items[2].id).to.equal(categoryInPharmacyMasterTemplate2.id);
+      381 |         expect(items[2].usedCount).to.equal(13);
+
+      at Object.<anonymous> (test/integration/pharmacist/master-templates.spec.ts:378:32)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+PASS test/integration/patient/gooco-patients.spec.ts (10.244s, 2939 MB heap size)
+PASS test/integration/pharmacy-patient/remove-pharmacy-patient.spec.ts (13.631s, 1334 MB heap size)
+FAIL test/integration/patient/integrate-patients.spec.ts (11.184s, 1618 MB heap size)
+  ● Integrate Patients › Success › should return patient list if param is integrate valid
+
+    TypeError: Cannot read property 'integratePatients' of undefined
+
+      173 |     it('should return patient list if param is integrate valid', async () => {
+      174 |       const [status, res] = await getResponse(app, mutation, variables);
+    > 175 |       const patients = res.data.integratePatients.sort((p1, p2) => p1.code.localeCompare(p2.code));
+          |                                 ^
+      176 |       const patientIntegrateHistoryCount = await getRepository(PatientIntegrationHistoryEntity)
+      177 |         .count();
+      178 |       const patientAfterUpdate = await getRepository(PatientEntity).findOne({
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:175:33)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Success › should return 2 result if the integrations has deleteCode and keepCode does not exist
+
+    TypeError: Cannot read property 'integratePatients' of undefined
+
+      249 |
+      250 |         const [status, res] = await getResponse(app, mutation, variables);
+    > 251 |         const patients = res.data.integratePatients.sort((p1, p2) =>
+          |                                   ^
+      252 |           p1.code.localeCompare(p2.code),
+      253 |         );
+      254 |         expect(status).to.equal(200);
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:251:35)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Success › should return 2 result if the integrations has deleteCode does not exist
+
+    TypeError: Cannot read property 'integratePatients' of undefined
+
+      263 |
+      264 |       const [status, res] = await getResponse(app, mutation, variables);
+    > 265 |       const patients = res.data.integratePatients.sort((p1, p2) => p1.code.localeCompare(p2.code));
+          |                                 ^
+      266 |       expect(status).to.equal(200);
+      267 |       expect(patients.length).to.equal(2);
+      268 |       expect(patients[0].code).to.equal('0');
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:265:33)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Success › Should create patient with code is keepCode if the integrations has keepCode does not exist
+
+    TypeError: Cannot read property 'integratePatients' of undefined
+
+      276 |
+      277 |         const [status, res] = await getResponse(app, mutation, variables);
+    > 278 |         const patients = res.data.integratePatients.sort((p1, p2) =>
+          |                                   ^
+      279 |           p1.code.localeCompare(p2.code),
+      280 |         );
+      281 |         const patient0 = patients[0];
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:278:35)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › should return error if permanentToken of public company
+
+    Expected value   {"data": null, "errors": [{"code": 2001, "entity": "AuthPermanentTokenEntity", "index": null, "message": "データが見つかりません。", "property": "permanentToken"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2001,
+    -       "entity": "AuthPermanentTokenEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "データが見つかりません。",
+    -       "property": "permanentToken",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      344 |
+      345 |       expect(status).to.equal(400);
+    > 346 |       expect(res).to.eql(errors);
+          |                      ^
+      347 |     });
+      348 |
+      349 |     it('Should return error if the permanent token is invalid', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:346:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the permanent token is invalid
+
+    Expected value   {"data": null, "errors": [{"code": 2001, "entity": "AuthPermanentTokenEntity", "index": null, "message": "データが見つかりません。", "property": "permanentToken"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2001,
+    -       "entity": "AuthPermanentTokenEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "データが見つかりません。",
+    -       "property": "permanentToken",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      359 |
+      360 |       expect(status).to.equal(400);
+    > 361 |       expect(res).to.eql(errors);
+          |                      ^
+      362 |     });
+      363 |
+      364 |     it('Should return error if the size of the list is less than 1', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:361:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the size of the list is less than 1
+
+    Expected value   {"data": null, "errors": [{"code": 1015, "entity": "PatientEntity", "index": null, "message": "1件以上入力してください。", "property": "integrations"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1015,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "1件以上入力してください。",
+    -       "property": "integrations",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      371 |
+      372 |       expect(status).to.equal(400);
+    > 373 |       expect(res).to.eql(errors);
+          |                      ^
+      374 |     });
+      375 |
+      376 |     it('Should return error if the keepCode is empty', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:373:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the keepCode is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PatientEntity", "index": 1, "message": "値を入力してください。", "property": "keepCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1000,
+    -       "entity": "PatientEntity",
+    -       "index": 1,
+    -       "message": "値を入力してください。",
+    -       "property": "keepCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      383 |
+      384 |       expect(status).to.equal(400);
+    > 385 |       expect(res).to.eql(errors);
+          |                      ^
+      386 |     });
+      387 |
+      388 |     it('Should return error if the keepCode is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:385:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the integrations has keepCode duplicated
+
+    Expected value   {"data": null, "errors": [{"code": 1017, "entity": "PatientEntity", "index": 0, "message": "重複しています。", "property": "keepCode"}, {"code": 1017, "entity": "PatientEntity", "index": 1, "message": "重複しています。", "property": "keepCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1017,
+    -       "entity": "PatientEntity",
+    -       "index": 0,
+    -       "message": "重複しています。",
+    -       "property": "keepCode",
+    -     },
+    -     Object {
+    -       "code": 1017,
+    -       "entity": "PatientEntity",
+    -       "index": 1,
+    -       "message": "重複しています。",
+    -       "property": "keepCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      403 |       );
+      404 |       expect(status).to.equal(400);
+    > 405 |       expect(res).to.eql(errors);
+          |                      ^
+      406 |     });
+      407 |
+      408 |     it('Should return error if the deleteCode is empty', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:405:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the deleteCode is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PatientEntity", "index": 1, "message": "値を入力してください。", "property": "deleteCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1000,
+    -       "entity": "PatientEntity",
+    -       "index": 1,
+    -       "message": "値を入力してください。",
+    -       "property": "deleteCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      415 |
+      416 |       expect(status).to.equal(400);
+    > 417 |       expect(res).to.eql(errors);
+          |                      ^
+      418 |     });
+      419 |
+      420 |     it('Should return error if the deleteCode is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:417:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the integrations has deleteCode duplicated
+
+    Expected value   {"data": null, "errors": [{"code": 1017, "entity": "PatientEntity", "index": 0, "message": "重複しています。", "property": "deleteCode"}, {"code": 1017, "entity": "PatientEntity", "index": 1, "message": "重複しています。", "property": "deleteCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1017,
+    -       "entity": "PatientEntity",
+    -       "index": 0,
+    -       "message": "重複しています。",
+    -       "property": "deleteCode",
+    -     },
+    -     Object {
+    -       "code": 1017,
+    -       "entity": "PatientEntity",
+    -       "index": 1,
+    -       "message": "重複しています。",
+    -       "property": "deleteCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      435 |       );
+      436 |       expect(status).to.equal(400);
+    > 437 |       expect(res).to.eql(errors);
+          |                      ^
+      438 |     });
+      439 |
+      440 |     it('Should return error if the integrations has deleteCode same keepCode', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:437:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the integrations has deleteCode same keepCode
+
+    Expected value   [{"code": 1017, "entity": "PatientEntity", "index": 0, "message": "重複しています。", "property": "keepCode"}, {"code": 1017, "entity": "PatientEntity", "index": 0, "message": "重複しています。", "property": "deleteCode"}]
+    Received:
+      [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]
+
+    Message:
+      expected [ Array(1) ] to deeply equal [ Array(2) ]
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Array [
+        Object {
+    -     "code": 1017,
+    -     "entity": "PatientEntity",
+    -     "index": 0,
+    -     "message": "重複しています。",
+    -     "property": "keepCode",
+    -   },
+    -   Object {
+    -     "code": 1017,
+    -     "entity": "PatientEntity",
+    -     "index": 0,
+    -     "message": "重複しています。",
+    -     "property": "deleteCode",
+    +     "code": 2000,
+    +     "entity": null,
+    +     "index": null,
+    +     "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +     "property": null,
+        },
+      ]
+
+      460 |
+      461 |       expect(status).to.equal(400);
+    > 462 |       expect(res.errors).to.eql(errors);
+          |                             ^
+      463 |     });
+      464 |
+      465 |     it('Should return error if the integrationCode is empty', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:462:29)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the integrationCode is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PatientEntity", "index": 1, "message": "値を入力してください。", "property": "integrationCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1000,
+    -       "entity": "PatientEntity",
+    -       "index": 1,
+    -       "message": "値を入力してください。",
+    -       "property": "integrationCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      472 |
+      473 |       expect(status).to.equal(400);
+    > 474 |       expect(res).to.eql(errors);
+          |                      ^
+      475 |     });
+      476 |
+      477 |     it('Should return error if the integrationCode is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:474:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Integrate Patients › Error › Should return error if the integrationCode is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": 1, "message": "有効桁数を超えています。", "property": "integrationCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    -       "index": 1,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "integrationCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      493 |
+      494 |       expect(status).to.equal(400);
+    > 495 |       expect(res).to.eql(errors);
+          |                      ^
+      496 |     });
+      497 |   });
+      498 | });
+
+      at Object.<anonymous> (test/integration/patient/integrate-patients.spec.ts:495:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+FAIL test/integration/patient/remove-flc-patient.spec.ts (11.147s, 1897 MB heap size)
+  ● Remove Public patient › Success › should delete the inactive patient and all patient relations successfully
+
+    TypeError: Cannot read property 'removeFLCPatient' of undefined
+
+      175 |         .getOne();
+      176 |
+    > 177 |       const data = res.data.removeFLCPatient;
+          |                             ^
+      178 |       expect(status).to.equal(200);
+      179 |       expect(data.id).to.equal(inactivePatient.id);
+      180 |       expect(deletedInactivePatient.id).to.equal(inactivePatient.id);
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:177:29)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Success › should delete the active patient and all patient relations successfully
+
+    TypeError: Cannot read property 'removeFLCPatient' of undefined
+
+      285 |         .getOne();
+      286 |
+    > 287 |       const data = res.data.removeFLCPatient;
+          |                             ^
+      288 |       expect(status).to.equal(200);
+      289 |       expect(data.id).to.equal(activePatient.id);
+      290 |       expect(deletedActivePatient.id).to.equal(activePatient.id);
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:287:29)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Success › Should only delete the patient successfully if the patient has no relationship
+
+    TypeError: Cannot read property 'removeFLCPatient' of undefined
+
+      322 |         variables.id = patient.id;
+      323 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 324 |         const data = res.data.removeFLCPatient;
+          |                               ^
+      325 |         const deletedPatient = await getRepository(PatientEntity).createQueryBuilder()
+      326 |           .where('PatientEntity.id = :id', { id: patient.id })
+      327 |           .withDeleted()
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:324:31)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Success › Should delete the patient successfully by LeadPharmacist
+
+    TypeError: Cannot read property 'removeFLCPatient' of undefined
+
+      345 |       variables.id = patient.id;
+      346 |       const [status, res] = await getResponse(app, mutation, variables, token);
+    > 347 |       const data = res.data.removeFLCPatient;
+          |                             ^
+      348 |       const deletedPatient = await getRepository(PatientEntity).createQueryBuilder()
+      349 |         .where('PatientEntity.id = :id', { id: patient.id })
+      350 |         .withDeleted()
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:347:29)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Success › Should delete the patient successfully by Pharmacist
+
+    TypeError: Cannot read property 'removeFLCPatient' of undefined
+
+      367 |       variables.id = patient.id;
+      368 |       const [status, res] = await getResponse(app, mutation, variables, token);
+    > 369 |       const data = res.data.removeFLCPatient;
+          |                             ^
+      370 |       const deletedPatient = await getRepository(PatientEntity).createQueryBuilder()
+      371 |         .where('PatientEntity.id = :id', { id: patient.id })
+      372 |         .withDeleted()
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:369:29)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Success › Should delete the patient successfully by BackOfficer
+
+    TypeError: Cannot read property 'removeFLCPatient' of undefined
+
+      389 |       variables.id = patient.id;
+      390 |       const [status, res] = await getResponse(app, mutation, variables, token);
+    > 391 |       const data = res.data.removeFLCPatient;
+          |                             ^
+      392 |       const deletedPatient = await getRepository(PatientEntity).createQueryBuilder()
+      393 |         .where('PatientEntity.id = :id', { id: patient.id })
+      394 |         .withDeleted()
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:391:29)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Error › should return error if patient is not found
+
+    Expected value   404
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 404
+
+      409 |       const errors = formatError(2001, 'データが見つかりません。', 'id', 'PatientEntity');
+      410 |
+    > 411 |       expect(status).to.equal(404);
+          |                         ^
+      412 |       expect(res).to.eql(errors);
+      413 |     });
+      414 |
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:411:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Error › should be return unauthorization error if not logged in
+
+    Expected value   401
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 401
+
+      419 |       const errors = formatError(2006, '認証エラーになりました。');
+      420 |
+    > 421 |       expect(status).to.equal(401);
+          |                         ^
+      422 |       expect(res).to.eql(errors);
+      423 |     });
+      424 |
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:421:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Error › should return error not found entity if patient id is invalid
+
+    Expected value   404
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 404
+
+      428 |       const error = formatError(2001, 'データが見つかりません。', 'id', 'PatientEntity');
+      429 |
+    > 430 |       expect(status).to.equal(404);
+          |                         ^
+      431 |       expect(res).to.eql(error);
+      432 |     });
+      433 |
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:430:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Error › should be return a forbidden if pharmacist role is Other
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      448 |       const errors = formatError(2003, 'アクセスが禁止されています。');
+      449 |
+    > 450 |       expect(status).to.equal(403);
+          |                         ^
+      451 |       expect(res).to.eql(errors);
+      452 |     });
+      453 |
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:450:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Remove Public patient › Error › should be return a forbidden if current pharmacy is gooco company
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      467 |       const errors = formatError(2003, 'アクセスが禁止されています。');
+      468 |
+    > 469 |       expect(status).to.equal(403);
+          |                         ^
+      470 |       expect(res).to.eql(errors);
+      471 |     });
+      472 |   });
+
+      at Object.<anonymous> (test/integration/patient/remove-flc-patient.spec.ts:469:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+FAIL test/integration/patient/create-flc-patient.spec.ts (10.618s, 2178 MB heap size)
+  ● Create Patients for public company › Success › should return created patient if param is valid
+
+    TypeError: Cannot read property 'createFLCPatient' of undefined
+
+      124 |     it('should return created patient if param is valid', async () => {
+      125 |       const [status, res] = await getResponse(app, mutation, variables, token);
+    > 126 |       const data = res.data.createFLCPatient;
+          |                             ^
+      127 |
+      128 |       expect(status).to.equal(200);
+      129 |       expect(data.code).to.equal('patient_1');
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:126:29)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Success › should return created patient list if param is valid without kanaName birthday phone code
+
+    TypeError: Cannot read property 'createFLCPatient' of undefined
+
+      145 |         variables.createPatientDTO.code = null;
+      146 |         const [status, res] = await getResponse(app, mutation, variables, token);
+    > 147 |         const data = res.data.createFLCPatient;
+          |                               ^
+      148 |
+      149 |         expect(status).to.equal(200);
+      150 |         expect(data.code).to.equal(null);
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:147:31)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should return error if current pharmacist is Other role
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      179 |       const errors = formatError(2003, 'アクセスが禁止されています。');
+      180 |
+    > 181 |       expect(status).to.equal(403);
+          |                         ^
+      182 |       expect(res).to.eql(errors);
+      183 |     });
+      184 |
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:181:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should return error if medicationHistoryCode is already existed
+
+    Expected value   {"data": null, "errors": [{"code": 1017, "entity": "PharmacyPatientEntity", "index": 0, "message": "重複しています。", "property": "medicationHistoryCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1017,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "重複しています。",
+    -       "property": "medicationHistoryCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      202 |
+      203 |       expect(status).to.equal(400);
+    > 204 |       expect(res).to.eql(errors);
+          |                      ^
+      205 |     });
+      206 |
+      207 |     it('should return error if company type is Gooco', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:204:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should return error if company type is Gooco
+
+    Expected value   403
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 403
+
+      223 |       const errors = formatError(2003, 'アクセスが禁止されています。');
+      224 |
+    > 225 |       expect(status).to.equal(403);
+          |                         ^
+      226 |       expect(res).to.eql(errors);
+      227 |     });
+      228 |
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:225:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the size of the list is greater than 100
+
+    Expected value   {"data": null, "errors": [{"code": 1016, "entity": "PatientEntity", "index": null, "message": "有効件数を超えています。", "property": "pharmacyPatients"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効件数を超えています。",
+    -       "property": "pharmacyPatients",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      243 |
+      244 |       expect(status).to.equal(400);
+    > 245 |       expect(res).to.eql(errors);
+          |                      ^
+      246 |     });
+      247 |
+      248 |     it('Should return error if the size of the list is less than 1', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:245:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the size of the list is less than 1
+
+    Expected value   {"data": null, "errors": [{"code": 1015, "entity": "PatientEntity", "index": null, "message": "1件以上入力してください。", "property": "pharmacyPatients"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1015,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "1件以上入力してください。",
+    -       "property": "pharmacyPatients",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      258 |
+      259 |       expect(status).to.equal(400);
+    > 260 |       expect(res).to.eql(errors);
+          |                      ^
+      261 |     });
+      262 |
+      263 |     it('should return error if patient code is already existed', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:260:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should return error if patient code is already existed
+
+    Expected value   {"data": null, "errors": [{"code": 1017, "entity": "PatientEntity", "index": null, "message": "重複しています。", "property": "patientCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1017,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "重複しています。",
+    -       "property": "patientCode",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      275 |
+      276 |       expect(status).to.equal(400);
+    > 277 |       expect(res).to.eql(errors);
+          |                      ^
+      278 |     });
+      279 |
+      280 |     it('Should return error if the code is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:277:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the code is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "code"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "code",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      300 |
+      301 |       expect(status).to.equal(400);
+    > 302 |       expect(res).to.eql(errors);
+          |                      ^
+      303 |     });
+      304 |
+      305 |     it('Should return error if the kana name is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:302:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the kana name is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "kanaName"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "kanaName",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      324 |       );
+      325 |       expect(status).to.equal(400);
+    > 326 |       expect(res).to.eql(errors);
+          |                      ^
+      327 |     });
+      328 |
+      329 |     it('Should return error if the kanji name is empty', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:326:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the kanji name is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PatientEntity", "index": null, "message": "値を入力してください。", "property": "kanjiName"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1000,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "値を入力してください。",
+    -       "property": "kanjiName",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      340 |
+      341 |       expect(status).to.equal(400);
+    > 342 |       expect(res).to.eql(errors);
+          |                      ^
+      343 |     });
+      344 |
+      345 |     it('Should return error if the kanji name is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:342:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the kana name is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "kanjiName"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "kanjiName",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      365 |
+      366 |       expect(status).to.equal(400);
+    > 367 |       expect(res).to.eql(errors);
+          |                      ^
+      368 |     });
+      369 |
+      370 |     it('Should return error if the phone is longer than 255 characters', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:367:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the phone is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PatientEntity", "index": null, "message": "有効桁数を超えています。", "property": "phone"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "phone",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      381 |
+      382 |       expect(status).to.equal(400);
+    > 383 |       expect(res).to.eql(errors);
+          |                      ^
+      384 |     });
+      385 |
+      386 |     it('Should return error if the phone is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:383:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the birthday is not date
+
+    Expected value   {"data": null, "errors": [{"code": 1010, "entity": "PatientEntity", "index": null, "message": "日付を入力してください。", "property": "birthday"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1010,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "日付を入力してください。",
+    -       "property": "birthday",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      406 |
+      407 |       expect(status).to.equal(400);
+    > 408 |       expect(res).to.eql(errors);
+          |                      ^
+      409 |     });
+      410 |
+      411 |     it('Should return error if the birthday is from future', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:408:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the birthday is from future
+
+    Expected value   {"data": null, "errors": [{"code": 2044, "entity": "PatientEntity", "index": null, "message": "将来の日付にできません。", "property": "birthday"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2044,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "将来の日付にできません。",
+    -       "property": "birthday",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      422 |
+      423 |       expect(status).to.equal(400);
+    > 424 |       expect(res).to.eql(errors);
+          |                      ^
+      425 |     });
+      426 |
+      427 |     it('Should return error if the pharmacyId is empty', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:424:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the pharmacyId is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PharmacyPatientEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyId"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1000,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "値を入力してください。",
+    -       "property": "pharmacyId",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      438 |
+      439 |       expect(status).to.equal(400);
+    > 440 |       expect(res).to.eql(errors);
+          |                      ^
+      441 |     });
+      442 |
+      443 |     it('Should return error if not found entity with pharmacy id', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:440:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if not found entity with pharmacy id
+
+    Expected value   {"data": null, "errors": [{"code": 2001, "entity": "PharmacyPatientEntity", "index": 0, "message": "データが見つかりません。", "property": "pharmacyId"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2001,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "データが見つかりません。",
+    -       "property": "pharmacyId",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      454 |
+      455 |       expect(status).to.equal(400);
+    > 456 |       expect(res).to.eql(errors);
+          |                      ^
+      457 |     });
+      458 |
+      459 |     it('Should return error if not found entity with pharmacist id', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:456:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if not found entity with pharmacist id
+
+    Expected value   {"data": null, "errors": [{"code": 2007, "entity": "PharmacyPatientEntity", "index": 0, "message": "該当店舗に所属していない薬剤師です。", "property": "pharmacistId"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2007,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "該当店舗に所属していない薬剤師です。",
+    -       "property": "pharmacistId",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      470 |
+      471 |       expect(status).to.equal(400);
+    > 472 |       expect(res).to.eql(errors);
+          |                      ^
+      473 |     });
+      474 |
+      475 |     it('Should return error if the size of the pharmacyPatients is less than 1', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:472:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the size of the pharmacyPatients is less than 1
+
+    Expected value   {"data": null, "errors": [{"code": 1015, "entity": "PatientEntity", "index": null, "message": "1件以上入力してください。", "property": "pharmacyPatients"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1015,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "1件以上入力してください。",
+    -       "property": "pharmacyPatients",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      486 |
+      487 |       expect(status).to.equal(400);
+    > 488 |       expect(res).to.eql(errors);
+          |                      ^
+      489 |     });
+      490 |
+      491 |     it('Should return error if the size of the pharmacyPatients is greater than 100', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:488:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the size of the pharmacyPatients is greater than 100
+
+    Expected value   {"data": null, "errors": [{"code": 1016, "entity": "PatientEntity", "index": null, "message": "有効件数を超えています。", "property": "pharmacyPatients"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1016,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "有効件数を超えています。",
+    -       "property": "pharmacyPatients",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      504 |       );
+      505 |       expect(status).to.equal(400);
+    > 506 |       expect(res).to.eql(errors);
+          |                      ^
+      507 |     });
+      508 |
+      509 |     it('Should return error if the pharmacyPatients has pharmacyId duplicated', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:506:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the pharmacyPatients has pharmacyId duplicated
+
+    Expected value   {"data": null, "errors": [{"code": 1018, "entity": "PatientEntity", "index": null, "message": "pharmacyIdが重複しています。", "property": "pharmacyPatients"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1018,
+    -       "entity": "PatientEntity",
+    +       "code": 2000,
+    +       "entity": null,
+            "index": null,
+    -       "message": "pharmacyIdが重複しています。",
+    -       "property": "pharmacyPatients",
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      528 |       );
+      529 |       expect(status).to.equal(400);
+    > 530 |       expect(res).to.eql(errors);
+          |                      ^
+      531 |     });
+      532 |
+      533 |     it('Should return error if the medicationHistoryCode is not string', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:530:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › Should return error if the medicationHistoryCode is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PharmacyPatientEntity", "index": 0, "message": "有効桁数を超えています。", "property": "medicationHistoryCode"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1003,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "有効桁数を超えています。",
+    -       "property": "medicationHistoryCode",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      554 |       );
+      555 |       expect(status).to.equal(400);
+    > 556 |       expect(res).to.eql(errors);
+          |                      ^
+      557 |     });
+      558 |
+      559 |     it('should be return error if pharmacy id is not UUID', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:556:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should be return error if pharmacy id is not UUID
+
+    Expected value   {"data": null, "errors": [{"code": 1014, "entity": "PharmacyPatientEntity", "index": 0, "message": "UUIDで入れてください。", "property": "pharmacyId"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1014,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "UUIDで入れてください。",
+    -       "property": "pharmacyId",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      570 |
+      571 |       expect(status).to.equal(400);
+    > 572 |       expect(res).to.eql(errors);
+          |                      ^
+      573 |     });
+      574 |
+      575 |     it('should be return error if pharmacy id is not UUID', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:572:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should be return error if pharmacy id is not UUID
+
+    Expected value   {"data": null, "errors": [{"code": 1014, "entity": "PharmacyPatientEntity", "index": 0, "message": "UUIDで入れてください。", "property": "pharmacistId"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1014,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "UUIDで入れてください。",
+    -       "property": "pharmacistId",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      586 |
+      587 |       expect(status).to.equal(400);
+    > 588 |       expect(res).to.eql(errors);
+          |                      ^
+      589 |     });
+      590 |
+      591 |     it('should return error if PIC is inactive', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:588:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should return error if PIC is inactive
+
+    Expected value   {"data": null, "errors": [{"code": 2007, "entity": "PharmacyPatientEntity", "index": 0, "message": "該当店舗に所属していない薬剤師です。", "property": "pharmacistId"}]}
+    Received:
+      {"errors": [{"code": 2000, "entity": null, "index": null, "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".", "property": null}]}
+
+    Message:
+      expected { Object (errors) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+    -   "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2007,
+    -       "entity": "PharmacyPatientEntity",
+    -       "index": 0,
+    -       "message": "該当店舗に所属していない薬剤師です。",
+    -       "property": "pharmacistId",
+    +       "code": 2000,
+    +       "entity": null,
+    +       "index": null,
+    +       "message": "Cannot query field \"pharmacyIdWhenCreateTodo\" on type \"PatientDTO\".",
+    +       "property": null,
+          },
+        ],
+      }
+
+      602 |
+      603 |       expect(status).to.equal(400);
+    > 604 |       expect(res).to.eql(errors);
+          |                      ^
+      605 |     });
+      606 |
+      607 |     it('should return error if current pharmacist is inactive', async () => {
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:604:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Create Patients for public company › Error › should return error if current pharmacist is inactive
+
+    Expected value   401
+    Received:
+      400
+
+    Message:
+      expected 400 to equal 401
+
+      610 |       const errors = formatError(2006, '認証エラーになりました。');
+      611 |
+    > 612 |       expect(status).to.equal(401);
+          |                         ^
+      613 |       expect(res).to.eql(errors);
+      614 |     });
+      615 |   });
+
+      at Object.<anonymous> (test/integration/patient/create-flc-patient.spec.ts:612:25)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+PASS test/integration/pharmacist/save-pharmacist.spec.ts (9.905s, 2468 MB heap size)
+PASS test/integration/pharmacy/payments.spec.ts (10.284s, 2757 MB heap size)
+PASS test/integration/pharmacist-invite-token/invite-pharmacists.spec.ts (12.123s, 3039 MB heap size)
+PASS test/integration/pharmacist-invite-token/register-pharmacist.spec.ts (10.226s, 3322 MB heap size)
+PASS test/integration/pharmacist/todos.spec.ts (14.851s, 1600 MB heap size)
+FAIL test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts (10.267s, 1714 MB heap size)
+  ● Save pharmacists › Success › should return pharmacist list if param is valid
+
+    TypeError: Cannot read property 'savePharmacists' of null
+
+      92 |     it('should return pharmacist list if param is valid', async () => {
+      93 |       const [status, res] = await getResponse(app, mutation, variables);
+    > 94 |       const pharmacists = res.data.savePharmacists.sort(
+         |                                    ^
+      95 |         (p1, p2) => p1.code.localeCompare(p2.code),
+      96 |       );
+      97 |       await getRepository(PharmacyPharmacistEntity).delete({
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:94:36)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Success › check call api again with same variables
+
+    TypeError: Cannot read property 'savePharmacists' of null
+
+      115 |     it('check call api again with same variables', async () => {
+      116 |       const [status, res] = await getResponse(app, mutation, variables);
+    > 117 |       const pharmacists = res.data.savePharmacists.sort(
+          |                                    ^
+      118 |         (p1, p2) => p1.code.localeCompare(p2.code),
+      119 |       );
+      120 |       await getRepository(PharmacyPharmacistEntity).delete({
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:117:36)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Success › should return pharmacist list if pharmacist is exists
+
+    TypeError: Cannot read property 'savePharmacists' of null
+
+      152 |       ];
+      153 |       const [status, res] = await getResponse(app, mutation, variables);
+    > 154 |       const pharmacists = res.data.savePharmacists.sort(
+          |                                    ^
+      155 |         (p1, p2) => p1.code.localeCompare(p2.code),
+      156 |       );
+      157 |       await getRepository(PharmacyPharmacistEntity).delete({
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:154:36)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Success › The code is unique within the company scope
+
+    TypeError: Cannot read property 'savePharmacists' of null
+
+      182 |
+      183 |       const [status, res] = await getResponse(app, mutation, variables);
+    > 184 |       const pharmacists = res.data.savePharmacists;
+          |                                    ^
+      185 |
+      186 |       expect(status).to.equal(200);
+      187 |       expect(pharmacists.length).to.equal(1);
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:184:36)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if kanji name is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "kanjiName"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "kanjiName"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+    @@ -4,9 +4,23 @@
+          Object {
+            "code": 1000,
+            "entity": "PharmacistEntity",
+            "index": 0,
+            "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+            "property": "kanjiName",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+          },
+        ],
+      }
+
+      260 |
+      261 |       expect(status).to.equal(400);
+    > 262 |       expect(res).to.eql(errors);
+          |                      ^
+      263 |     });
+      264 |
+      265 |     it('Should return error if the kanji name is not string', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:262:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if length of kanji name is bigger 255
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PharmacistEntity", "index": 0, "message": "有効桁数を超えています。", "property": "kanjiName"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1003, "entity": "PharmacistEntity", "index": 0, "message": "有効桁数を超えています。", "property": "kanjiName"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+            "code": 1003,
+            "entity": "PharmacistEntity",
+            "index": 0,
+            "message": "有効桁数を超えています。",
+            "property": "kanjiName",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+          },
+        ],
+      }
+
+      281 |
+      282 |       expect(status).to.equal(400);
+    > 283 |       expect(res).to.eql(errors);
+          |                      ^
+      284 |     });
+      285 |
+      286 |     it('Should return error if the kana name is not string', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:283:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the kana name is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PharmacistEntity", "index": 1, "message": "有効桁数を超えています。", "property": "kanaName"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1003, "entity": "PharmacistEntity", "index": 1, "message": "有効桁数を超えています。", "property": "kanaName"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+    @@ -1,9 +1,23 @@
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+            "code": 1003,
+            "entity": "PharmacistEntity",
+            "index": 1,
+            "message": "有効桁数を超えています。",
+            "property": "kanaName",
+
+      302 |
+      303 |       expect(status).to.equal(400);
+    > 304 |       expect(res).to.eql(errors);
+          |                      ^
+      305 |     });
+      306 |
+      307 |     it('Should return error if the code is empty', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:304:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the code is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "code"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "code"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+    @@ -2,10 +2,24 @@
+        "data": null,
+        "errors": Array [
+          Object {
+            "code": 1000,
+            "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+            "index": 1,
+            "message": "値を入力してください。",
+            "property": "code",
+          },
+        ],
+
+      314 |
+      315 |       expect(status).to.equal(400);
+    > 316 |       expect(res).to.eql(errors);
+          |                      ^
+      317 |     });
+      318 |
+      319 |     it('Should return error if the code is not string', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:316:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the code is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PharmacistEntity", "index": 1, "message": "有効桁数を超えています。", "property": "code"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1003, "entity": "PharmacistEntity", "index": 1, "message": "有効桁数を超えています。", "property": "code"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+    @@ -1,9 +1,23 @@
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+            "code": 1003,
+            "entity": "PharmacistEntity",
+            "index": 1,
+            "message": "有効桁数を超えています。",
+            "property": "code",
+
+      335 |
+      336 |       expect(status).to.equal(400);
+    > 337 |       expect(res).to.eql(errors);
+          |                      ^
+      338 |     });
+      339 |
+      340 |     it('Should return error if the role is empty', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:337:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the avatar is longer than 255 characters
+
+    Expected value   {"data": null, "errors": [{"code": 1003, "entity": "PharmacistEntity", "index": 1, "message": "有効桁数を超えています。", "property": "avatar"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1003, "entity": "PharmacistEntity", "index": 1, "message": "有効桁数を超えています。", "property": "avatar"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+    @@ -1,9 +1,23 @@
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+            "code": 1003,
+            "entity": "PharmacistEntity",
+            "index": 1,
+            "message": "有効桁数を超えています。",
+            "property": "avatar",
+
+      365 |
+      366 |       expect(status).to.equal(400);
+    > 367 |       expect(res).to.eql(errors);
+          |                      ^
+      368 |     });
+      369 |
+      370 |     it('Should return error if the pharmacyCode child is empty', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:367:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the pharmacyCode child is empty
+
+    Expected value   {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyCodes"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+    @@ -2,11 +2,18 @@
+        "data": null,
+        "errors": Array [
+          Object {
+            "code": 1000,
+            "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+            "index": 1,
+            "message": "値を入力してください。",
+    -       "property": "pharmacyCodes",
+    +       "property": "pharmacyPharmacists",
+          },
+        ],
+      }
+
+      377 |
+      378 |       expect(status).to.equal(400);
+    > 379 |       expect(res).to.eql(errors);
+          |                      ^
+      380 |     });
+      381 |
+      382 |     it('Should return error if the pharmacyCodes is not array', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:379:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the pharmacyCodes is less than 1
+
+    Expected value   {"data": null, "errors": [{"code": 1015, "entity": "PharmacistEntity", "index": 1, "message": "1件以上入力してください。", "property": "pharmacyCodes"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1015,
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+            "entity": "PharmacistEntity",
+            "index": 1,
+    -       "message": "1件以上入力してください。",
+    -       "property": "pharmacyCodes",
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+          },
+        ],
+      }
+
+      398 |
+      399 |       expect(status).to.equal(400);
+    > 400 |       expect(res).to.eql(errors);
+          |                      ^
+      401 |     });
+      402 |
+      403 |     it('Should return error if the code is duplicate', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:400:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if the code is duplicate
+
+    Expected value   {"data": null, "errors": [{"code": 1017, "entity": "PharmacistEntity", "index": 1, "message": "重複しています。", "property": "code"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 1017,
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 0,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+            "entity": "PharmacistEntity",
+            "index": 1,
+    -       "message": "重複しています。",
+    -       "property": "code",
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+          },
+        ],
+      }
+
+      409 |
+      410 |       expect(status).to.equal(400);
+    > 411 |       expect(res).to.eql(errors);
+          |                      ^
+      412 |     });
+      413 |
+      414 |     it('Should return error if pharmacy code does not exist', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:411:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if pharmacy code does not exist
+
+    Expected value   {"data": null, "errors": [{"code": 2001, "entity": "PharmacyEntity", "index": 0, "message": "データが見つかりません。", "property": "pharmacyCode"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力してください。", "property": "pharmacyPharmacists"}]}
+
+    Message:
+      expected { Object (errors, data) } to deeply equal { Object (errors, data) }
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Object {
+        "data": null,
+        "errors": Array [
+          Object {
+    -       "code": 2001,
+    -       "entity": "PharmacyEntity",
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+            "index": 0,
+    -       "message": "データが見つかりません。",
+    -       "property": "pharmacyCode",
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+    +     },
+    +     Object {
+    +       "code": 1000,
+    +       "entity": "PharmacistEntity",
+    +       "index": 1,
+    +       "message": "値を入力してください。",
+    +       "property": "pharmacyPharmacists",
+          },
+        ],
+      }
+
+      421 |
+      422 |       expect(status).to.equal(400);
+    > 423 |       expect(res).to.eql(errors);
+          |                      ^
+      424 |     });
+      425 |
+      426 |     it('Should return error if pharmacy codes is duplicated', async () => {
+
+      at Object.<anonymous> (test/integration/pharmacist/v1/v1-save-pharmacist.spec.ts:423:22)
+          at runMicrotasks (<anonymous>)
+          at runMicrotasks (<anonymous>)
+
+  ● Save pharmacists › Error › Should return error if pharmacy codes is duplicated
+
+    Expected value   {"data": null, "errors": [{"code": 1018, "entity": "PharmacistEntity", "index": 0, "message": "重複しています。", "property": "pharmacyCodes"}]}
+    Received:
+      {"data": null, "errors": [{"code": 1000, "entity": "PharmacistEntity", "index": 0, "message": "値を入力してください。", "property": "pharmacyPharmacists"}, {"code": 1000, "entity": "PharmacistEntity", "index": 1, "message": "値を入力して��
