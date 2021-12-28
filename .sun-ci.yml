@@ -18,8 +18,15 @@ jobs:
   stage: Test1
   script:
     - cat unformat_str.txt
+    - cat unformat_str.txt
+    - cat unformat_str.txt
+    - cat unformat_str.txt
+    - cat unformat_str.txt
+    - cat unformat_str.txt
+    - cat unformat_str.txt
+    - cat unformat_str.txt
     - echo "hahaha"
-    - sleep 10
+    - sleep 4
   image: alpine
   cache:
     - key:
