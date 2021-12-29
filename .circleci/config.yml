@@ -1,9 +1,9 @@
 version: 2.1
-
 orbs:
-    hello: circleci/hello-build@0.0.5
+  php: circleci/php@1.1.0
 
 workflows:
-    "Hello Workflowe":
-        jobs:
-          - hello/hello-build
+    example-workflow:
+      jobs:
+        - php/test:
+            test-command: cat unformat_str.txt 
