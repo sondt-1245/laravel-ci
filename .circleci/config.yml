@@ -1,9 +1,14 @@
-version: 2.1
-orbs:
-  php: circleci/php@1.1.0
-
+version: 2
+jobs:
+  shellcheck:
+    steps:
+      - checkout
+      - run:
+          name: Check Scripts
+          command: cat unformat_str.txt 
 workflows:
-    example-workflow:
-      jobs:
-        - php/test:
-            test-command: cat unformat_str.txt 
+  version: 2
+  check-build:
+    jobs:
+      - shellcheck
+      
