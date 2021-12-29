@@ -1,6 +1,8 @@
 version: 2
 jobs:
   shellcheck:
+    docker:
+      - image: alpine
     steps:
       - checkout
       - run:
