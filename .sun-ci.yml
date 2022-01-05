@@ -1,5 +1,3 @@
-default:
-  workspace: shared
   
 .skip-deploy: &skip-deploy
   messages:
@@ -17,13 +15,6 @@ jobs:
 - name: Test Result
   stage: Test1
   script:
-    - cat unformat_str.txt
-    - cat unformat_str.txt
-    - cat unformat_str.txt
-    - cat unformat_str.txt
-    - cat unformat_str.txt
-    - cat unformat_str.txt
-    - cat unformat_str.txt
     - cat unformat_str.txt
     - echo "hahaha"
     - sleep 4
