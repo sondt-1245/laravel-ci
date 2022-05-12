@@ -2,7 +2,6 @@
   messages:
   - '[ci skip deploy]'
 
-
 stages:
 - Test1
 - Install
