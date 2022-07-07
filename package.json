@@ -13,6 +13,10 @@
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "nextjs/next": "1.alpha.1",
+        "fake-frame": "abcacba123",
+        "fake-framework": "abc.1"
+     
     }
 }
