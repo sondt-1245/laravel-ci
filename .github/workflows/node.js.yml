@@ -5,7 +5,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  Yarn-Install:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,3 +16,10 @@ jobs:
       uses: CultureHQ/actions-yarn@v1.0.1
     - run: yarn
     - run: echo "Yarn done"
+    - name: Cache node modules
+      id: cache-node-modules
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
