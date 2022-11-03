@@ -23,3 +23,4 @@ jobs:
         cache-name: cache-node-modules
       with:
         path: node_modules
+        key: cache-node-modules
