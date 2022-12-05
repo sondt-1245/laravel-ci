@@ -1,22 +1,51 @@
 {
+    "name": "laravel-ci",
+    "version": "0.0.0",
+    "description": "laravel-ci",
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+      "dev": "nuxt",
+      "build": "nuxt build",
+      "start": "nuxt start",
+      "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+      "test": "jest"
+    },
+    "dependencies": {
+      "@sentry/tracing": "^6.11.0",
+      "@sentry/vue": "^6.11.0",
+      "apexcharts": "^3.32.0",
+      "axios": "^0.22.0",
+      "date-fns": "^2.16.1",
+      "element-ui": "^2.14.1",
+      "envalid": "^7.2.2",
+      "laravel-echo": "^1.13.0",
+      "lodash": "^4.17.20",
+      "numeral": "^2.0.6",
+      "nuxt": "^2.15.8",
+      "pusher-js": "^7.3.0",
+      "socket.io-client": "^4.5.1",
+      "store": "^2.0.12",
+      "tippy.js": "^6.2.7",
+      "vue-apexcharts": "^1.6.2",
+      "vue-tour": "^2.0.0"
     },
     "devDependencies": {
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "nextjs/next": "1.alpha.1",
-        "fake-frame": "abcacba123",
-        "fake-framework": "abc.1"
-     
+      "@tailwindcss/postcss7-compat": "^2.0.3",
+      "@vue/test-utils": "^1.1.2",
+      "babel-eslint": "^10.1.0",
+      "babel-jest": "^26.6.3",
+      "eslint": "^7.16.0",
+      "eslint-config-airbnb-base": "^14.2.1",
+      "eslint-import-resolver-alias": "^1.1.2",
+      "eslint-import-resolver-webpack": "^0.13.0",
+      "eslint-plugin-import": "^2.22.1",
+      "eslint-plugin-nuxt": "^2.0.0",
+      "eslint-plugin-vue": "^7.4.0",
+      "jest": "^26.6.3",
+      "sass": "^1.37.5",
+      "sass-loader": "^10.1.1",
+      "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+      "vue-jest": "^3.0.7"
     }
-}
+  }
+  
