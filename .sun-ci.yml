@@ -1,9 +1,9 @@
-.skip-deploy: &skip-deploy
-  messages:
-  - '[ci skip deploy]'
+executor: kubernetes
+default:
+  workspace: shared
 
 stages:
-- Test1
+- Test First
 - Install
 - Build
 - Nothing
@@ -11,7 +11,7 @@ stages:
 
 jobs:
 - name: Test Result
-  stage: Test1
+  stage: Test First
   script:
     - echo ok
     - echo "Cache $CI_BUILD_NUMBER\n" >> cache
@@ -35,3 +35,87 @@ jobs:
     paths:
     - coverage
     expires_in: 3 days
+- name: Test Result 2
+  stage: Test First
+  script:
+    - echo ok
+    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
+    - cat cache
+    - sleep 10
+  image: alpine
+  cache:
+    - key:
+        files:
+        - .sun-ci.yml
+      paths:
+        - cache
+  test_result:
+    type: junit
+    path: junit.xml
+  coverage:
+    type: clover
+    path: coverage/coverage.xml
+  artifacts:
+    name: ar
+    paths:
+    - coverage
+    expires_in: 3 days
+- name: Test Result 3
+  stage: Test First
+  script:
+    - echo ok
+    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
+    - cat cache
+    - sleep 10
+  image: alpine
+  cache:
+    - key:
+        files:
+        - .sun-ci.yml
+      paths:
+        - cache
+  test_result:
+    type: junit
+    path: junit.xml
+  coverage:
+    type: clover
+    path: coverage/coverage.xml
+  artifacts:
+    name: ar
+    paths:
+    - coverage
+    expires_in: 3 days
+- name: Docker dind
+  stage: Test
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+  services:
+    - redis
+    - image: docker:20.10.17-dind
+      environment:
+        DOCKER_HOST: tcp://docker:2375
+  script:
+    - docker info
+    - echo ok
+    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
+    - cat cache
+    
+  image: docker:20.10.17
+  
+- name: Docker dind 2
+  stage: Test
+  environment:
+    DOCKER_HOST: tcp://docker:2375
+  services:
+    - redis
+    - image: docker:20.10.17-dind
+      environment:
+        DOCKER_HOST: tcp://docker:2375
+  script:
+    - docker info
+    - echo ok
+    - echo "Cache $CI_BUILD_NUMBER\n" >> cache
+    - cat cache
+    
+  image: docker:20.10.17
+
