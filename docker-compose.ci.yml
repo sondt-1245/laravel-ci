@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  php:
+    image: ghcr.io/sun-asterisk-research/php-dev:8.1-alpine3.16
+    restart: unless-stopped
+    working_dir: /srv/app
+    environment:
+      DOCUMENT_ROOT: /srv/app/public
+    volumes:
+      - ./:/srv/app
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    restart: unless-stopped
