@@ -6,7 +6,7 @@ stages:
 - Test First
 - Install
 - Build
-- Nothing
+- Nothing22
 - Test
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
     - echo ok
     - echo "Cache $CI_BUILD_NUMBER\n" >> cache
     - cat cache
-    - sleep 10
+    - sleep 60
   image: alpine
   cache:
     - key:
