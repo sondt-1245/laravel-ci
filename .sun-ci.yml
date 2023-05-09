@@ -13,7 +13,7 @@ jobs:
 - name: Test Result
   stage: Test First
   script:
-    - echo ok
+    - echo ok333333333
     - echo "Cache $CI_BUILD_NUMBER\n" >> cache
     - cat cache
     - sleep 10
